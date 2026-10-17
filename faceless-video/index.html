@@ -38,6 +38,115 @@
         footer { text-align: center; padding: 20px 0; color: #555; font-size: 0.8rem; }
         code { background: #222; padding: 2px 6px; border-radius: 4px; color: #f0c040; font-size: 0.9rem; }
         .badge { display: inline-block; background: #2a2a2a; color: #f0c040; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; margin-right: 6px; }
+
+        /* Demo section */
+        .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0; align-items: start; }
+        @media (max-width: 720px) { .demo-grid { grid-template-columns: 1fr; } }
+
+        /* Video player mockup */
+        .player-mockup { background: #000; border: 1px solid #333; border-radius: 10px; overflow: hidden; }
+        .player-screen { position: relative; width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .player-screen::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.03) 3px, rgba(0,0,0,0.03) 4px); }
+        .frame-content { position: relative; z-index: 1; text-align: center; padding: 20px; }
+        .frame-content .hook { color: #fff; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+        .frame-content .subline { color: #ccc; font-size: 0.85rem; opacity: 0.8; }
+        .play-btn { position: absolute; z-index: 2; width: 64px; height: 64px; background: rgba(240,192,64,0.9); border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.2s, background 0.2s; }
+        .play-btn:hover { transform: scale(1.1); background: #f0c040; }
+        .play-btn::after { content: '▶'; color: #000; font-size: 1.4rem; margin-left: 4px; }
+        .play-btn.playing::after { content: '⏸'; margin-left: 0; font-size: 1.2rem; }
+        .player-controls { background: #111; padding: 10px 14px; display: flex; align-items: center; gap: 12px; }
+        .ctrl-btn { background: none; border: none; color: #aaa; font-size: 0.85rem; cursor: pointer; padding: 4px 8px; border-radius: 4px; }
+        .ctrl-btn:hover { color: #f0c040; background: #1a1a1a; }
+        .progress-track { flex: 1; height: 4px; background: #333; border-radius: 2px; cursor: pointer; position: relative; }
+        .progress-fill { height: 100%; background: #f0c040; border-radius: 2px; width: 0%; transition: width 0.1s linear; }
+        .time-display { color: #888; font-size: 0.75rem; min-width: 70px; text-align: right; }
+        .volume-bar { width: 60px; height: 4px; background: #333; border-radius: 2px; }
+        .volume-fill { height: 100%; background: #aaa; border-radius: 2px; width: 70%; }
+
+        /* Overlay elements on screen */
+        .screen-overlay { position: absolute; z-index: 1; }
+        .screen-overlay.top-left { top: 12px; left: 14px; }
+        .screen-overlay .badge-live { background: #e53935; color: #fff; font-size: 0.65rem; padding: 2px 8px; border-radius: 3px; font-weight: 600; }
+        .screen-overlay.bottom-right { bottom: 12px; right: 14px; }
+        .screen-overlay .platform-tag { background: rgba(0,0,0,0.6); color: #f0c040; font-size: 0.7rem; padding: 2px 8px; border-radius: 3px; }
+        .cta-overlay { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 1; background: #f0c040; color: #000; padding: 6px 16px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; opacity: 0; transition: opacity 0.5s; }
+        .cta-overlay.visible { opacity: 1; }
+
+        /* Sample titles */
+        .sample-titles { margin-top: 16px; }
+        .sample-titles h3 { color: #fff; font-size: 0.85rem; margin-bottom: 10px; }
+        .title-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .title-chip { background: #1a1a1a; border: 1px solid #2a2a2a; color: #ccc; padding: 6px 12px; border-radius: 16px; font-size: 0.75rem; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+        .title-chip:hover, .title-chip.active { border-color: #f0c040; color: #f0c040; }
+
+        /* Thumbnail gallery */
+        .thumb-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .thumb-item { background: #161616; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s; position: relative; }
+        .thumb-item:hover { border-color: #f0c040; transform: translateY(-2px); }
+        .thumb-item.active { border-color: #f0c040; box-shadow: 0 0 0 1px #f0c040; }
+        .thumb-preview { width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden; }
+        .thumb-preview .thumb-bg { position: absolute; inset: 0; }
+        .thumb-bg.bg-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .thumb-bg.bg-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .thumb-bg.bg-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .thumb-bg.bg-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .thumb-bg.bg-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .thumb-bg.bg-6 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        .thumb-label { position: absolute; bottom: 6px; left: 6px; right: 6px; color: #fff; font-size: 0.6rem; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; z-index: 1; }
+        .thumb-duration { position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,0.7); color: #fff; font-size: 0.55rem; padding: 1px 5px; border-radius: 2px; }
+        .thumb-title { padding: 8px; color: #ccc; font-size: 0.7rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Frame animation */
+        @keyframes frameFade { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .frame-anim { animation: frameFade 3s ease-in-out infinite; }
+
+        /* CSS-only interactivity */
+        .demo-input { position: absolute; opacity: 0; pointer-events: none; }
+        #demoPlay:checked ~ .demo-grid .play-btn::after { content: '⏸'; margin-left: 0; font-size: 1.2rem; }
+        #demoPlay:checked ~ .demo-grid .play-btn { background: #f0c040; }
+        #demoPlay:checked ~ .demo-grid .frame-anim { animation: none; }
+        #demoPlay:checked ~ .demo-grid .cta-overlay { opacity: 1; }
+        #demoPlay:checked ~ .demo-grid .progress-fill { width: 64%; transition: width 28s linear; }
+        #demoPlay:checked ~ .demo-grid .time-display::after { content: '0:29 / 0:45'; }
+        #demoPlay:checked ~ .demo-grid .time-display { font-size: 0; }
+        #demoPlay:checked ~ .demo-grid .time-display::after { font-size: 0.75rem; }
+        #demoPlay:checked ~ .demo-grid .ctrlPlay { color: #f0c040; font-size: 0; }
+        #demoPlay:checked ~ .demo-grid .ctrlPlay::after { content: '⏸'; font-size: 0.85rem; }
+        #demoPlay:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 50%, #16213e 100%); }
+        #demoPlay:checked ~ .demo-grid .frame-content .hook { font-size: 1.1rem; }
+        #demoPlay:checked ~ .demo-grid .frame-content .subline { opacity: 1; }
+        #demoPlay:checked ~ .demo-grid .badge-live { background: #e53935; animation: pulse 1.5s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* Thumbnail selection */
+        #thumb1:checked ~ .demo-grid .thumb-item[data-bg="bg-1"],
+        #thumb2:checked ~ .demo-grid .thumb-item[data-bg="bg-2"],
+        #thumb3:checked ~ .demo-grid .thumb-item[data-bg="bg-3"],
+        #thumb4:checked ~ .demo-grid .thumb-item[data-bg="bg-4"],
+        #thumb5:checked ~ .demo-grid .thumb-item[data-bg="bg-5"],
+        #thumb6:checked ~ .demo-grid .thumb-item[data-bg="bg-6"] { border-color: #f0c040; box-shadow: 0 0 0 1px #f0c040; }
+        #thumb1:checked ~ .demo-grid .thumb-item[data-bg="bg-1"] .thumb-title,
+        #thumb2:checked ~ .demo-grid .thumb-item[data-bg="bg-2"] .thumb-title,
+        #thumb3:checked ~ .demo-grid .thumb-item[data-bg="bg-3"] .thumb-title,
+        #thumb4:checked ~ .demo-grid .thumb-item[data-bg="bg-4"] .thumb-title,
+        #thumb5:checked ~ .demo-grid .thumb-item[data-bg="bg-5"] .thumb-title,
+        #thumb6:checked ~ .demo-grid .thumb-item[data-bg="bg-6"] .thumb-title { color: #f0c040; }
+
+        /* Title chip selection */
+        #title1:checked ~ .demo-grid .title-chip:nth-child(1),
+        #title2:checked ~ .demo-grid .title-chip:nth-child(2),
+        #title3:checked ~ .demo-grid .title-chip:nth-child(3),
+        #title4:checked ~ .demo-grid .title-chip:nth-child(4),
+        #title5:checked ~ .demo-grid .title-chip:nth-child(5),
+        #title6:checked ~ .demo-grid .title-chip:nth-child(6) { border-color: #f0c040; color: #f0c040; }
+
+        /* Thumbnail selection updates player screen */
+        #thumb1:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        #thumb2:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        #thumb3:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        #thumb4:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        #thumb5:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        #thumb6:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
     </style>
 </head>
 <body>
@@ -87,6 +196,94 @@
                 <div class="feature-card">
                     <h3>🖥️ Local Rendering Engine</h3>
                     <p>All rendering happens on your own hardware — no cloud fees, no upload queues, no waiting. Full control over output quality, resolution, and format. Your content never leaves your machine until you publish it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo-preview">
+        <input type="checkbox" class="demo-input" id="demoPlay">
+        <input type="radio" class="demo-input" name="thumb" id="thumb1" checked>
+        <input type="radio" class="demo-input" name="thumb" id="thumb2">
+        <input type="radio" class="demo-input" name="thumb" id="thumb3">
+        <input type="radio" class="demo-input" name="thumb" id="thumb4">
+        <input type="radio" class="demo-input" name="thumb" id="thumb5">
+        <input type="radio" class="demo-input" name="thumb" id="thumb6">
+        <input type="radio" class="demo-input" name="title" id="title1" checked>
+        <input type="radio" class="demo-input" name="title" id="title2">
+        <input type="radio" class="demo-input" name="title" id="title3">
+        <input type="radio" class="demo-input" name="title" id="title4">
+        <input type="radio" class="demo-input" name="title" id="title5">
+        <input type="radio" class="demo-input" name="title" id="title6">
+        <div class="container">
+            <h2>See it in action</h2>
+            <p>Here's a preview of the type of faceless video content the automation produces. Click play to watch a sample, or browse the thumbnail gallery below.</p>
+            <div class="demo-grid">
+                <div>
+                    <div class="player-mockup">
+                        <div class="player-screen" id="playerScreen">
+                            <div class="screen-overlay top-left"><span class="badge-live">● REC</span></div>
+                            <div class="screen-overlay bottom-right"><span class="platform-tag">YouTube</span></div>
+                            <div class="frame-content frame-anim" id="frameContent">
+                                <div class="hook">5 Habits That Quietly Changed My Life</div>
+                                <div class="subline">You won't believe #3...</div>
+                            </div>
+                            <div class="cta-overlay" id="ctaOverlay">🔔 Subscribe for more</div>
+                            <label class="play-btn" for="demoPlay" aria-label="Play/Pause"></label>
+                        </div>
+                        <div class="player-controls">
+                            <label class="ctrl-btn ctrlPlay" for="demoPlay">⏵</label>
+                            <div class="progress-track" id="progressTrack"><div class="progress-fill" id="progressFill"></div></div>
+                            <span class="time-display" id="timeDisplay">0:00 / 0:45</span>
+                            <button class="ctrl-btn" id="ctrlMute">🔊</button>
+                            <div class="volume-bar"><div class="volume-fill"></div></div>
+                            <button class="ctrl-btn" id="ctrlFS">⛶</button>
+                        </div>
+                    </div>
+                    <div class="sample-titles">
+                        <h3>Sample auto-generated titles</h3>
+                        <div class="title-chips">
+                            <label class="title-chip active" for="title1">5 Habits That Quietly Changed My Life</label>
+                            <label class="title-chip" for="title2">The Truth About Productivity Nobody Tells You</label>
+                            <label class="title-chip" for="title3">Why Smart People Wake Up at 4 AM</label>
+                            <label class="title-chip" for="title4">I Tried Digital Detox for 30 Days — Here's What Happened</label>
+                            <label class="title-chip" for="title5">How to Focus Deeply in a Distracted World</label>
+                            <label class="title-chip" for="title6">The 2-Minute Rule That Saved My Mornings</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color:#fff; margin-bottom:12px;">Thumbnail gallery</h3>
+                    <p style="font-size:0.85rem; color:#888; margin-bottom:14px;">Generated thumbnails from recent automated uploads. Click any to preview.</p>
+                    <div class="thumb-gallery">
+                        <label class="thumb-item active" for="thumb1" data-bg="bg-1">
+                            <div class="thumb-preview"><div class="thumb-bg bg-1"></div><span class="thumb-duration">0:45</span><span class="thumb-label">Morning Routine</span></div>
+                            <div class="thumb-title">5 Habits That Quietly Changed My Life</div>
+                        </label>
+                        <label class="thumb-item" for="thumb2" data-bg="bg-2">
+                            <div class="thumb-preview"><div class="thumb-bg bg-2"></div><span class="thumb-duration">1:12</span><span class="thumb-label">Deep Work</span></div>
+                            <div class="thumb-title">The Truth About Productivity Nobody Tells You</div>
+                        </label>
+                        <label class="thumb-item" for="thumb3" data-bg="bg-3">
+                            <div class="thumb-preview"><div class="thumb-bg bg-3"></div><span class="thumb-duration">0:58</span><span class="thumb-label">4 AM Club</span></div>
+                            <div class="thumb-title">Why Smart People Wake Up at 4 AM</div>
+                        </label>
+                        <label class="thumb-item" for="thumb4" data-bg="bg-4">
+                            <div class="thumb-preview"><div class="thumb-bg bg-4"></div><span class="thumb-duration">1:34</span><span class="thumb-label">30-Day Challenge</span></div>
+                            <div class="thumb-title">I Tried Digital Detox for 30 Days — Here's What Happened</div>
+                        </label>
+                        <label class="thumb-item" for="thumb5" data-bg="bg-5">
+                            <div class="thumb-preview"><div class="thumb-bg bg-5"></div><span class="thumb-duration">2:01</span><span class="thumb-label">Focus Hacks</span></div>
+                            <div class="thumb-title">How to Focus Deeply in a Distracted World</div>
+                        </label>
+                        <label class="thumb-item" for="thumb6" data-bg="bg-6">
+                            <div class="thumb-preview"><div class="thumb-bg bg-6"></div><span class="thumb-duration">0:52</span><span class="thumb-label">Tiny Habits</span></div>
+                            <div class="thumb-title">The 2-Minute Rule That Saved My Mornings</div>
+                        </label>
+                    </div>
+                    <div style="margin-top:20px; padding:16px; background:#161616; border:1px solid #2a2a2a; border-radius:8px; font-size:0.8rem; color:#888;">
+                        <strong style="color:#f0c040;">Fully automated:</strong> Each of these videos — script, visuals, voiceover, captions, thumbnail, and title — was generated and uploaded without human intervention. The system produced everything you see above in a single run.
+                    </div>
                 </div>
             </div>
         </div>

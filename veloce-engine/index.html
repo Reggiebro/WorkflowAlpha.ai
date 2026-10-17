@@ -38,6 +38,55 @@
         footer { text-align: center; padding: 20px 0; color: #555; font-size: 0.8rem; }
         code { background: #222; padding: 2px 6px; border-radius: 4px; color: #f0c040; font-size: 0.9rem; }
         .badge { display: inline-block; background: #2a2a2a; color: #f0c040; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; margin-right: 6px; }
+
+        /* Mock Dashboard */
+        .mock-dashboard { background: #111; border: 1px solid #333; border-radius: 12px; overflow: hidden; margin: 24px 0; }
+        .mock-topbar { display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; padding: 12px 20px; border-bottom: 1px solid #2a2a2a; }
+        .mock-logo { color: #f0c040; font-weight: 700; font-size: 1rem; }
+        .mock-topbar-right { display: flex; align-items: center; gap: 12px; }
+        .mock-notif { color: #aaa; font-size: 0.85rem; }
+        .mock-avatar { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #f0c040; color: #000; font-size: 0.75rem; font-weight: 700; }
+        .mock-body { display: flex; min-height: 400px; }
+        .mock-sidebar { width: 160px; background: #0f0f0f; border-right: 1px solid #2a2a2a; padding: 12px 0; flex-shrink: 0; }
+        .mock-nav-item { padding: 10px 16px; color: #888; font-size: 0.85rem; cursor: pointer; }
+        .mock-nav-item:hover { color: #ccc; background: #161616; }
+        .mock-nav-item.active { color: #f0c040; background: #161616; border-right: 2px solid #f0c040; }
+        .mock-main { flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+        .mock-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .mock-stat-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px; text-align: center; }
+        .mock-stat-num { font-size: 1.6rem; font-weight: 700; color: #f0c040; }
+        .mock-stat-label { font-size: 0.75rem; color: #888; margin-top: 4px; }
+        .mock-panel { background: #161616; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px; }
+        .mock-panel-title { font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 12px; }
+        .mock-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .mock-table th { text-align: left; color: #888; font-weight: 500; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; }
+        .mock-table td { padding: 8px 10px; color: #ccc; border-bottom: 1px solid #1a1a1a; }
+        .mock-table tr:last-child td { border-bottom: none; }
+        .mock-status { padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; }
+        .mock-status.confirmed { background: #1a3a1a; color: #50c878; }
+        .mock-status.pending { background: #3a2a1a; color: #f0c040; }
+        .mock-status.seated { background: #1a2a3a; color: #4a9eff; }
+        .mock-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .mock-staff-list { display: flex; flex-direction: column; gap: 8px; }
+        .mock-staff-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+        .mock-staff-avatar { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; font-size: 0.7rem; font-weight: 700; color: #000; flex-shrink: 0; }
+        .mock-staff-item strong { color: #e0e0e0; font-size: 0.85rem; }
+        .mock-staff-role { color: #888; font-size: 0.8rem; }
+        .mock-staff-status { margin-left: auto; font-size: 0.7rem; }
+        .mock-staff-status.online { color: #50c878; }
+        .mock-staff-status.break { color: #f0c040; }
+        .mock-staff-status.offline { color: #666; }
+        .mock-shift-list { display: flex; flex-direction: column; gap: 6px; }
+        .mock-shift-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #1a1a1a; font-size: 0.85rem; }
+        .mock-shift-item:last-child { border-bottom: none; }
+        .mock-shift-time { color: #888; min-width: 110px; }
+        .mock-shift-name { color: #e0e0e0; font-weight: 500; }
+        .mock-shift-role { margin-left: auto; color: #888; font-size: 0.8rem; }
+        @media (max-width: 768px) {
+            .mock-sidebar { display: none; }
+            .mock-stats { grid-template-columns: repeat(2, 1fr); }
+            .mock-two-col { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -84,6 +133,146 @@
                     <h3>🚀 Custom Deployment Included</h3>
                     <p>We deploy Veloce-Engine on your infrastructure — your servers, your domain, your data. Full deployment is included in the license fee. No ongoing hosting fees, no vendor lock-in. You own the deployment, the data, and the configuration. White-label ready with your branding from day one.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo-preview">
+        <div class="container">
+            <h2>See Veloce-Engine in action</h2>
+            <p>A quick look at the dashboard your team will use every day. Reservations, staff, and shifts — all in one view.</p>
+
+            <!-- CSS-only mock dashboard -->
+            <div class="mock-dashboard">
+                <!-- Mock top bar -->
+                <div class="mock-topbar">
+                    <div class="mock-logo">⚡ Veloce-Engine</div>
+                    <div class="mock-topbar-right">
+                        <span class="mock-notif">🔔 3</span>
+                        <span class="mock-avatar">JD</span>
+                    </div>
+                </div>
+
+                <div class="mock-body">
+                    <!-- Mock sidebar -->
+                    <div class="mock-sidebar">
+                        <div class="mock-nav-item active">📊 Dashboard</div>
+                        <div class="mock-nav-item">📋 Reservations</div>
+                        <div class="mock-nav-item">💬 Staff Chat</div>
+                        <div class="mock-nav-item">🔄 Shifts</div>
+                        <div class="mock-nav-item">⚙️ Settings</div>
+                    </div>
+
+                    <!-- Mock main content -->
+                    <div class="mock-main">
+                        <!-- Stats row -->
+                        <div class="mock-stats">
+                            <div class="mock-stat-card">
+                                <div class="mock-stat-num">24</div>
+                                <div class="mock-stat-label">Today's Reservations</div>
+                            </div>
+                            <div class="mock-stat-card">
+                                <div class="mock-stat-num">8</div>
+                                <div class="mock-stat-label">Staff On Shift</div>
+                            </div>
+                            <div class="mock-stat-card">
+                                <div class="mock-stat-num">3</div>
+                                <div class="mock-stat-label">Pending Requests</div>
+                            </div>
+                            <div class="mock-stat-card">
+                                <div class="mock-stat-num">96%</div>
+                                <div class="mock-stat-label">Table Occupancy</div>
+                            </div>
+                        </div>
+
+                        <!-- Reservations table -->
+                        <div class="mock-panel">
+                            <div class="mock-panel-title">📋 Today's Reservations</div>
+                            <table class="mock-table">
+                                <thead>
+                                    <tr><th>Time</th><th>Guest</th><th>Party</th><th>Table</th><th>Status</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>12:00</td><td>Maria Garcia</td><td>4</td><td>T3</td><td class="mock-status confirmed">Confirmed</td></tr>
+                                    <tr><td>12:30</td><td>James Wilson</td><td>2</td><td>T1</td><td class="mock-status confirmed">Confirmed</td></tr>
+                                    <tr><td>13:00</td><td>Aisha Patel</td><td>6</td><td>T7</td><td class="mock-status pending">Pending</td></tr>
+                                    <tr><td>13:30</td><td>Carlos Ruiz</td><td>2</td><td>T2</td><td class="mock-status confirmed">Confirmed</td></tr>
+                                    <tr><td>14:00</td><td>Emma Chen</td><td>4</td><td>T5</td><td class="mock-status seated">Seated</td></tr>
+                                    <tr><td>14:30</td><td>Liam O'Brien</td><td>8</td><td>T9</td><td class="mock-status pending">Pending</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Staff & Shifts row -->
+                        <div class="mock-two-col">
+                            <div class="mock-panel">
+                                <div class="mock-panel-title">👥 Staff On Duty</div>
+                                <div class="mock-staff-list">
+                                    <div class="mock-staff-item">
+                                        <span class="mock-staff-avatar" style="background:#f0c040;">JD</span>
+                                        <div><strong>John Doe</strong><br><span class="mock-staff-role">Manager</span></div>
+                                        <span class="mock-staff-status online">●</span>
+                                    </div>
+                                    <div class="mock-staff-item">
+                                        <span class="mock-staff-avatar" style="background:#4a9eff;">SM</span>
+                                        <div><strong>Sarah Miller</strong><br><span class="mock-staff-role">Server</span></div>
+                                        <span class="mock-staff-status online">●</span>
+                                    </div>
+                                    <div class="mock-staff-item">
+                                        <span class="mock-staff-avatar" style="background:#e05555;">AK</span>
+                                        <div><strong>Alex Kim</strong><br><span class="mock-staff-role">Kitchen</span></div>
+                                        <span class="mock-staff-status online">●</span>
+                                    </div>
+                                    <div class="mock-staff-item">
+                                        <span class="mock-staff-avatar" style="background:#50c878;">LN</span>
+                                        <div><strong>Lisa Nguyen</strong><br><span class="mock-staff-role">Bartender</span></div>
+                                        <span class="mock-staff-status break">●</span>
+                                    </div>
+                                    <div class="mock-staff-item">
+                                        <span class="mock-staff-avatar" style="background:#9b59b6;">MR</span>
+                                        <div><strong>Mike Ross</strong><br><span class="mock-staff-role">Host</span></div>
+                                        <span class="mock-staff-status offline">●</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mock-panel">
+                                <div class="mock-panel-title">🔄 Shift Schedule</div>
+                                <div class="mock-shift-list">
+                                    <div class="mock-shift-item">
+                                        <span class="mock-shift-time">10:00 – 18:00</span>
+                                        <span class="mock-shift-name">John Doe</span>
+                                        <span class="mock-shift-role">Manager</span>
+                                    </div>
+                                    <div class="mock-shift-item">
+                                        <span class="mock-shift-time">11:00 – 19:00</span>
+                                        <span class="mock-shift-name">Sarah Miller</span>
+                                        <span class="mock-shift-role">Server</span>
+                                    </div>
+                                    <div class="mock-shift-item">
+                                        <span class="mock-shift-time">11:00 – 23:00</span>
+                                        <span class="mock-shift-name">Alex Kim</span>
+                                        <span class="mock-shift-role">Kitchen</span>
+                                    </div>
+                                    <div class="mock-shift-item">
+                                        <span class="mock-shift-time">14:00 – 22:00</span>
+                                        <span class="mock-shift-name">Lisa Nguyen</span>
+                                        <span class="mock-shift-role">Bartender</span>
+                                    </div>
+                                    <div class="mock-shift-item">
+                                        <span class="mock-shift-time">16:00 – 00:00</span>
+                                        <span class="mock-shift-name">Mike Ross</span>
+                                        <span class="mock-shift-role">Host</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:24px;">
+                <a href="#contact" class="cta">View Live Demo →</a>
             </div>
         </div>
     </section>

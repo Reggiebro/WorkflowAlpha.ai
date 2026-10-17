@@ -38,6 +38,28 @@
         footer { text-align: center; padding: 20px 0; color: #555; font-size: 0.8rem; }
         code { background: #222; padding: 2px 6px; border-radius: 4px; color: #f0c040; font-size: 0.9rem; }
         .badge { display: inline-block; background: #2a2a2a; color: #f0c040; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; margin-right: 6px; }
+        .demo-terminal { background: #0a0a0a; border: 1px solid #333; border-radius: 10px; overflow: hidden; margin: 20px 0; }
+        .demo-terminal-header { background: #1a1a1a; padding: 10px 16px; display: flex; gap: 8px; align-items: center; border-bottom: 1px solid #333; }
+        .demo-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+        .demo-terminal-body { padding: 20px; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; line-height: 1.8; text-align: left; min-height: 340px; }
+        .terminal-line { display: block; }
+        .terminal-prompt { color: #f0c040; font-weight: 600; }
+        .terminal-path { color: #555; }
+        .terminal-success { color: #27c93f; }
+        .terminal-info { color: #e0e040; }
+        .terminal-muted { color: #555; }
+        .terminal-keyword { color: #666; }
+        .terminal-string { color: #e0e0e0; }
+        .code-block { margin: 8px 0 8px 20px; padding-left: 16px; border-left: 2px solid #333; }
+        .code-line { display: block; }
+        .code-indent-1 { padding-left: 20px; }
+        .code-indent-2 { padding-left: 40px; }
+        .code-indent-3 { padding-left: 60px; }
+        .demo-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px; }
+        .demo-highlight-card { text-align: center; }
+        .demo-highlight-icon { font-size: 1.8rem; margin-bottom: 8px; }
+        .demo-highlight-title { color: #fff; font-weight: 500; margin-bottom: 4px; }
+        .demo-highlight-desc { color: #888; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -51,6 +73,7 @@
     <div class="nav-bar">
         <a href="#overview">Overview</a>
         <a href="#features">Features</a>
+        <a href="#demo-preview">Demo</a>
         <a href="#package">Package</a>
         <a href="#contact">Contact</a>
     </div>
@@ -88,6 +111,64 @@
                 <div class="feature-card">
                     <h3>💾 Persistent storage option</h3>
                     <p>Enable an encrypted persistent storage partition on the USB drive to carry your projects, configurations, and conversation history between sessions. The partition is encrypted with a passphrase you set — without it, the data is unreadable. Disable it for a fully ephemeral session that leaves no trace even on the USB itself. You choose per boot: persistent or amnesiac.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo-preview">
+        <div class="container">
+            <h2>Live Demo</h2>
+            <p>Watch USB Coding Expert in action — boot from USB and start generating code instantly.</p>
+            <div class="demo-box" style="background:#0a0a0a; border:1px solid #333; border-radius:10px; padding:0; margin:20px 0; overflow:hidden;">
+                <div class="demo-box-header" style="background:#1a1a1a; padding:10px 16px; display:flex; gap:8px; align-items:center; border-bottom:1px solid #333;">
+                    <span class="dot" style="width:12px;height:12px;border-radius:50%;background:#ff5f56;"></span>
+                    <span class="dot" style="width:12px;height:12px;border-radius:50%;background:#ffbd2e;"></span>
+                    <span class="dot" style="width:12px;height:12px;border-radius:50%;background:#27c93f;"></span>
+                    <span style="margin-left:12px; color:#888; font-size:0.8rem; font-family:monospace;">USB Coding Expert — AI Assistant</span>
+                </div>
+                <div class="demo-box-body" style="padding:20px; font-family:'Courier New', monospace; font-size:0.85rem; line-height:1.8; text-align:left; min-height:320px;">
+                    <div style="color:#555;">[BOOT] Loading model from USB... done</div>
+                    <div style="color:#555;">[BOOT] Initializing runtime environment... done</div>
+                    <div style="color:#555;">[BOOT] Air-gapped mode confirmed. No network detected.</div>
+                    <div style="color:#555;">[BOOT] Ready. Type 'help' for commands.</div>
+                    <div style="margin-top:12px;"><span style="color:#f0c040;">user@usb-expert</span><span style="color:#555;">:~$</span> <span style="color:#e0e0e0;">generate python script to scan a network</span></div>
+                    <div style="margin-top:8px;"><span style="color:#27c93f;">usb-expert</span><span style="color:#555;">:~$</span> <span style="color:#e0e0e0;">Generating...</span></div>
+                    <div style="margin-top:8px; padding-left:20px; border-left:2px solid #333;">
+                        <div><span style="color:#666;">import</span> <span style="color:#f0c040;">socket</span></div>
+                        <div><span style="color:#666;">import</span> <span style="color:#f0c040;">argparse</span></div>
+                        <div style="margin-top:4px;"><span style="color:#666;">def</span> <span style="color:#e0e040;">scan_network</span><span style="color:#e0e0e0;">(cidr):</span></div>
+                        <div style="padding-left:20px;"><span style="color:#666;">"""Scan a /24 subnet for live hosts."""</span></div>
+                        <div style="padding-left:20px;"><span style="color:#e0e0e0;">network = ipaddress.ip_network(cidr)</span></div>
+                        <div style="padding-left:20px;"><span style="color:#666;">for</span> <span style="color:#e0e0e0;">host in network.hosts():</span></div>
+                        <div style="padding-left:40px;"><span style="color:#e0e0e0;">s = socket.socket(AF_INET, SOCK_STREAM)</span></div>
+                        <div style="padding-left:40px;"><span style="color:#e0e0e0;">s.settimeout(0.5)</span></div>
+                        <div style="padding-left:40px;"><span style="color:#e0e0e0;">result = s.connect_ex((str(host), 80))</span></div>
+                        <div style="padding-left:40px;"><span style="color:#666;">if</span> <span style="color:#e0e0e0;">result == 0:</span></div>
+                        <div style="padding-left:60px;"><span style="color:#e0e0e0;">print(f"{{host}} — open")</span></div>
+                        <div style="padding-left:40px;"><span style="color:#e0e0e0;">s.close()</span></div>
+                    </div>
+                    <div style="margin-top:12px;"><span style="color:#27c93f;">usb-expert</span><span style="color:#555;">:~$</span> <span style="color:#e0e0e0;">Done. Script ready to deploy.</span></div>
+                    <div style="margin-top:8px;"><span style="color:#555;">✔ Scan complete: 254 hosts checked</span></div>
+                    <div style="margin-top:4px;"><span style="color:#555;">✔ 3 live hosts found on ports 80, 443, 22</span></div>
+                    <div style="margin-top:4px;"><span style="color:#555;">✔ No data transmitted externally</span></div>
+                </div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; margin-top:16px;">
+                <div class="feature-card" style="text-align:center;">
+                    <div style="font-size:1.8rem; margin-bottom:8px;">⚡</div>
+                    <div style="color:#fff; font-weight:500; margin-bottom:4px;">Instant boot</div>
+                    <div style="color:#888; font-size:0.85rem;">Under 60 seconds from USB to working assistant</div>
+                </div>
+                <div class="feature-card" style="text-align:center;">
+                    <div style="font-size:1.8rem; margin-bottom:8px;">🧠</div>
+                    <div style="color:#fff; font-weight:500; margin-bottom:4px;">Autonomous</div>
+                    <div style="color:#888; font-size:0.85rem;">No cloud. No API keys. Fully offline operation</div>
+                </div>
+                <div class="feature-card" style="text-align:center;">
+                    <div style="font-size:1.8rem; margin-bottom:8px;">🔒</div>
+                    <div style="color:#fff; font-weight:500; margin-bottom:4px;">Secure</div>
+                    <div style="color:#888; font-size:0.85rem;">Air-gapped by design. Zero network connectivity</div>
                 </div>
             </div>
         </div>

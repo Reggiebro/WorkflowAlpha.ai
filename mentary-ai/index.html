@@ -38,6 +38,34 @@
         footer { text-align: center; padding: 20px 0; color: #555; font-size: 0.8rem; }
         code { background: #222; padding: 2px 6px; border-radius: 4px; color: #f0c040; font-size: 0.9rem; }
         .badge { display: inline-block; background: #2a2a2a; color: #f0c040; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; margin-right: 6px; }
+        /* Demo section */
+        #demo-preview { background: #0a0a0a; }
+        .terminal-window { background: #111; border: 1px solid #2a2a2a; border-radius: 10px; overflow: hidden; max-width: 700px; margin: 0 auto; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+        .terminal-header { background: #1a1a1a; padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #2a2a2a; }
+        .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .terminal-dot.red { background: #ff5f56; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #27c93f; }
+        .terminal-title { color: #666; font-size: 0.8rem; margin-left: 8px; }
+        .terminal-body { padding: 20px; font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.7; min-height: 340px; }
+        .terminal-prompt { color: #27c93f; font-weight: 600; }
+        .terminal-query { color: #e0e0e0; }
+        .terminal-output { color: #aaa; margin-top: 8px; }
+        .terminal-status { color: #f0c040; margin-top: 4px; }
+        .terminal-cursor { display: inline-block; width: 8px; height: 16px; background: #f0c040; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .typing-line { overflow: hidden; white-space: nowrap; border-right: 2px solid #f0c040; animation: typing 0.8s steps(30) forwards; width: 0; }
+        .typing-line:nth-child(2) { animation-delay: 0.3s; }
+        .typing-line:nth-child(3) { animation-delay: 0.6s; }
+        .typing-line:nth-child(4) { animation-delay: 0.9s; }
+        .typing-line:nth-child(5) { animation-delay: 1.1s; }
+        .typing-line:nth-child(6) { animation-delay: 1.3s; }
+        .typing-line:nth-child(7) { animation-delay: 1.5s; }
+        .typing-line:nth-child(8) { animation-delay: 1.7s; }
+        @keyframes typing { to { width: 100%; } }
+        .sample-queries { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 16px 0; }
+        .sample-chip { background: #1a1a1a; border: 1px solid #333; color: #ccc; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; transition: all 0.2s; }
+        .sample-chip:hover { border-color: #f0c040; color: #f0c040; }
     </style>
 </head>
 <body>
@@ -51,6 +79,7 @@
     <div class="nav-bar">
         <a href="#overview">Overview</a>
         <a href="#features">Features</a>
+        <a href="#demo-preview">Demo</a>
         <a href="#package">Package</a>
         <a href="#contact">Contact</a>
     </div>
@@ -85,6 +114,53 @@
                     <h3>⚙️ Custom Deployment Included</h3>
                     <p>Your license includes deployment engineering support tailored to your infrastructure. Whether you need bare-metal installation, containerized deployment via Docker, or integration with existing on-premise systems, our team ensures Mentary AI runs optimally in your environment — including air-gapped and high-security configurations.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo-preview">
+        <div class="container">
+            <h2>See it in action</h2>
+            <p style="text-align:center; max-width:600px; margin:0 auto 8px;">Interactive mockup — this is a CSS-only preview showing how Mentary AI processes queries locally on your machine.</p>
+            <div class="sample-queries">
+                <span class="sample-chip">"Summarize this contract"</span>
+                <span class="sample-chip">"Analyze patient symptoms"</span>
+                <span class="sample-chip">"Extract key clauses"</span>
+                <span class="sample-chip">"Draft a secure email"</span>
+                <span class="sample-chip">"Classify this document"</span>
+            </div>
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">mentary-ai — local inference — 0 bytes transmitted</span>
+                </div>
+                <div class="terminal-body">
+                    <div>
+                        <span class="terminal-prompt">user@local:~$</span>
+                        <span class="terminal-query">mentary "Summarize this contract"</span>
+                    </div>
+                    <div class="terminal-status">⟳ Processing locally... 100% on-device</div>
+                    <div class="terminal-output">
+                        <div class="typing-line">Mentary AI v1.2 — model loaded from ./weights/</div>
+                        <div class="typing-line">Input: "Summarize this contract" (12 tokens)</div>
+                        <div class="typing-line">▶ Generating response...</div>
+                        <div class="typing-line">— Summary —</div>
+                        <div class="typing-line">This agreement establishes a 12-month service</div>
+                        <div class="typing-line">period with automatic renewal clauses under</div>
+                        <div class="typing-line">Section 4.2. Key obligations include...</div>
+                        <div class="typing-line">✓ Complete. 0 bytes transmitted.</div>
+                    </div>
+                    <div style="margin-top:12px;">
+                        <span class="terminal-prompt">user@local:~$</span>
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="demo-box" style="margin-top:20px; border-color:#333;">
+                <div class="big" style="font-size:2rem;">100%</div>
+                <div class="label">Local processing — zero network activity</div>
             </div>
         </div>
     </section>
