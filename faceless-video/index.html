@@ -406,5 +406,178 @@
             <p style="margin-top:8px; color:#444;">Contact: <a href="mailto:workflowalpha.ai@gmail.com" style="color:#555;">workflowalpha.ai@gmail.com</a></p>
         </div>
     </footer>
+<script>
+(function() {
+    var platform = 'youtube';
+    var style = 'educational';
+
+    var hooks = {
+        youtube: "Here's something most people never realize about {topic}...",
+        tiktok: "Stop scrolling! You need to know this about {topic}...",
+        instagram: "This changed everything I knew about {topic}..."
+    };
+
+    var intros = {
+        youtube: "What's going up everyone, welcome back to the channel. Today we're diving deep into {topic}.",
+        tiktok: "POV: You finally found the ultimate guide to {topic}.",
+        instagram: "Swipe up to learn the secret about {topic} that experts don't want you to know."
+    };
+
+    var contentTemplates = {
+        educational: [
+            "First, let's understand the basics. {topic} is fundamentally about understanding core principles and how they interconnect.",
+            "Moving deeper, there are three key components you need to know about {topic}: theory, practice, and application.",
+            "Here's where it gets interesting. Research shows that {topic} has evolved significantly in just the last few years.",
+            "Let's break this down step by step. The first thing to grasp is that {topic} requires a structured approach.",
+            "Finally, the most important takeaway about {topic} is this: consistency beats intensity every single time."
+        ],
+        entertainment: [
+            "Okay, this is wild. So {topic} actually works in ways you'd never expect.",
+            "I was SHOOK when I found out about this next part of {topic}.",
+            "And just when you think it can't get any crazier, {topic} pulls this move...",
+            "The plot twist with {topic} is something nobody saw coming.",
+            "This is the moment everything you knew about {topic} gets flipped upside down."
+        ],
+        motivational: [
+            "If you're struggling with {topic}, listen to this. Your breakthrough is closer than you think.",
+            "Every expert in {topic} was once a beginner who refused to give up.",
+            "The difference between success and failure with {topic} comes down to one thing: showing up daily.",
+            "You have everything it takes to master {topic}. You just need to start.",
+            "Let this be your sign. Today is the day you take control of your {topic} journey."
+        ],
+        news: [
+            "Breaking developments in {topic} are reshaping the landscape as we speak.",
+            "New data reveals surprising trends in {topic} that demand our attention.",
+            "Experts are weighing in on the latest {topic} developments with mixed reactions.",
+            "The {topic} story continues to evolve with significant implications for everyone involved.",
+            "Here's what you need to know about the latest {topic} updates and what comes next."
+        ]
+    };
+
+    var ctas = {
+        youtube: "If this video helped you, smash that like button and subscribe for more content like this.",
+        tiktok: "Follow for more content about {topic}. You won't regret it.",
+        instagram: "Link in bio to learn more about {topic}. Save this for later!"
+    };
+
+    var outros = {
+        youtube: "That's all for today. Drop a comment below and I'll see you in the next one. Peace!",
+        tiktok: "That's the video. If you made it this far, you're already ahead of 99% of people.",
+        instagram: "Thanks for watching. Share this with someone who needs to hear it."
+    };
+
+    function generateScript() {
+        var topic = document.getElementById('sg-topic').value.trim();
+        if (!topic) {
+            alert('Please enter a video topic first.');
+            return;
+        }
+
+        var hook = hooks[platform].replace(/{topic}/g, topic);
+        var intro = intros[platform].replace(/{topic}/g, topic);
+        var content = contentTemplates[style].map(function(c) {
+            return c.replace(/{topic}/g, topic);
+        });
+        var cta = ctas[platform].replace(/{topic}/g, topic);
+        var outro = outros[platform];
+
+        var title = style === 'educational'
+            ? 'The Complete Guide to ' + topic + ' (2026)'
+            : style === 'entertainment'
+            ? 'You Won\'t Believe This About ' + topic + '...'
+            : style === 'motivational'
+            ? 'How to Master ' + topic + ' (Even If You\'re a Beginner)'
+            : 'What\'s Really Happening with ' + topic + ' Right Now';
+
+        var description = 'In this video, we explore ' + topic + ' in depth. ' + content[0].substring(0, 150) + '... Subscribe for more!';
+
+        document.getElementById('sg-hook').textContent = hook;
+        document.getElementById('sg-intro').textContent = intro;
+        document.getElementById('sg-content').textContent = content.join('\n\n');
+        document.getElementById('sg-cta').textContent = cta;
+        document.getElementById('sg-outro').textContent = outro;
+        document.getElementById('sg-title').textContent = title;
+        document.getElementById('sg-desc').textContent = description;
+
+        document.getElementById('sg-result').classList.add('visible');
+
+        var canvas = document.getElementById('sg-canvas');
+        if (canvas) {
+            var ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = 200;
+            ctx.fillStyle = '#111';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#f0c040';
+            ctx.font = 'bold 24px sans-serif';
+            ctx.fillText(title, 20, 40);
+            ctx.fillStyle = '#fff';
+            ctx.font = '16px sans-serif';
+            ctx.fillText(hook, 20, 80);
+            ctx.fillText(intro, 20, 110);
+            ctx.fillStyle = '#888';
+            ctx.font = '14px sans-serif';
+            ctx.fillText(content[0].substring(0, 60) + '...', 20, 150);
+        }
+    }
+
+    function copyScript() {
+        var text = 'TITLE: ' + document.getElementById('sg-title').textContent + '\n\n' +
+            'HOOK:\n' + document.getElementById('sg-hook').textContent + '\n\n' +
+            'INTRO:\n' + document.getElementById('sg-intro').textContent + '\n\n' +
+            'CONTENT:\n' + document.getElementById('sg-content').textContent + '\n\n' +
+            'CTA:\n' + document.getElementById('sg-cta').textContent + '\n\n' +
+            'OUTRO:\n' + document.getElementById('sg-outro').textContent + '\n\n' +
+            'DESCRIPTION:\n' + document.getElementById('sg-desc').textContent;
+
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text).then(function() {
+                var btn = document.getElementById('sg-copy');
+                btn.textContent = '✓ Copied!';
+                btn.classList.add('copied');
+                setTimeout(function() {
+                    btn.textContent = '📋 Copy Script';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        } else {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            var btn = document.getElementById('sg-copy');
+            btn.textContent = '✓ Copied!';
+            setTimeout(function() { btn.textContent = '📋 Copy Script'; }, 2000);
+        }
+    }
+
+    document.querySelectorAll('.sg-chip[data-platform]').forEach(function(chip) {
+        chip.addEventListener('click', function() {
+            document.querySelectorAll('.sg-chip[data-platform]').forEach(function(c) { c.classList.remove('selected'); });
+            chip.classList.add('selected');
+            platform = chip.getAttribute('data-platform');
+        });
+    });
+
+    document.querySelectorAll('.sg-chip[data-style]').forEach(function(chip) {
+        chip.addEventListener('click', function() {
+            document.querySelectorAll('.sg-chip[data-style]').forEach(function(c) { c.classList.remove('selected'); });
+            chip.classList.add('selected');
+            style = chip.getAttribute('data-style');
+        });
+    });
+
+    document.getElementById('sg-generate').addEventListener('click', generateScript);
+    document.getElementById('sg-copy').addEventListener('click', copyScript);
+    document.getElementById('sg-topic').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            generateScript();
+        }
+    });
+})();
+</script>
 </body>
 </html>

@@ -266,5 +266,110 @@
             <p style="margin-top:8px; color:#444;">Contact: <a href="mailto:workflowalpha.ai@gmail.com" style="color:#555;">workflowalpha.ai@gmail.com</a></p>
         </div>
     </footer>
+<script>
+(function() {
+    var lang = 'python';
+    var presets = {
+        reverse: 'Create a function that reverses a string',
+        http: 'Create a simple HTTP server',
+        file: 'Read and write a file',
+        token: 'Create an ERC-20 token'
+    };
+
+    var templates = {
+        python: {
+            reverse: 'def reverse_string(s):\n    """Reverse a string."""\n    return s[::-1]\n\nif __name__ == "__main__":\n    text = input("Enter a string: ")\n    print(f"Reversed: {reverse_string(text)}")',
+            http: 'from http.server import HTTPServer, BaseHTTPRequestHandler\n\nclass Handler(BaseHTTPRequestHandler):\n    def do_GET(self):\n        self.send_response(200)\n        self.send_header("Content-type", "text/html")\n        self.end_headers()\n        self.wfile.write(b"<h1>Hello from USB Coding Expert!</h1>")\n\nif __name__ == "__main__":\n    server = HTTPServer(("", 8080), Handler)\n    print("Server running on port 8080")\n    server.serve_forever()',
+            file: 'import os\n\ndef read_file(path):\n    with open(path, "r") as f:\n        return f.read()\n\ndef write_file(path, content):\n    with open(path, "w") as f:\n        f.write(content)\n    print(f"Written {len(content)} bytes to {path}")\n\nif __name__ == "__main__":\n    write_file("test.txt", "Hello from USB Coding Expert!")\n    print(read_file("test.txt"))',
+            token: 'pragma solidity ^0.8.0;\n\ncontract MyToken {\n    string public name = "MyToken";\n    string public symbol = "MTK";\n    uint8 public decimals = 18;\n    uint256 public totalSupply;\n    mapping(address => uint256) public balanceOf;\n    mapping(address => mapping(address => uint256)) public allowance;\n    event Transfer(address indexed from, address indexed to, uint256 value);\n    event Approval(address indexed owner, address indexed spender, uint256 value);\n    constructor(uint256 _initialSupply) {\n        totalSupply = _initialSupply * 10 ** uint256(decimals);\n        balanceOf[msg.sender] = totalSupply;\n        emit Transfer(address(0), msg.sender, totalSupply);\n    }\n    function transfer(address _to, uint256 _value) public returns (bool) {\n        require(balanceOf[msg.sender] >= _value, "Insufficient balance");\n        balanceOf[msg.sender] -= _value;\n        balanceOf[_to] += _value;\n        emit Transfer(msg.sender, _to, _value);\n        return true;\n    }\n}'
+        },
+        javascript: {
+            reverse: 'function reverseString(s) {\n    return s.split("").reverse().join("");\n}\n\nconst text = prompt("Enter a string:");\nconsole.log("Reversed:", reverseString(text));',
+            http: 'const http = require("http");\n\nconst server = http.createServer((req, res) => {\n    res.writeHead(200, { "Content-Type": "text/html" });\n    res.end("<h1>Hello from USB Coding Expert!</h1>");\n});\n\nserver.listen(8080, () => {\n    console.log("Server running on port 8080");\n});',
+            file: 'const fs = require("fs");\n\nfunction readFile(path) {\n    return fs.readFileSync(path, "utf8");\n}\n\nfunction writeFile(path, content) {\n    fs.writeFileSync(path, content);\n    console.log(`Written ${content.length} bytes to ${path}`);\n}\n\nwriteFile("test.txt", "Hello from USB Coding Expert!");\nconsole.log(readFile("test.txt"));',
+            token: 'const Web3 = require("web3");\nconst web3 = new Web3("https://mainnet.infura.io/v3/YOUR_KEY");\n\nconst abi = [{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"type":"function"}];\n\nconst contract = new web3.eth.Contract(abi, "0x...");\ncontract.methods.transfer("0x...", 100).send({ from: "0x..." });'
+        },
+        bash: {
+            reverse: '#!/bin/bash\nread -p "Enter a string: " text\necho "$text" | rev',
+            http: '#!/bin/bash\n# Simple HTTP server using netcat\nwhile true; do\n    echo -e "HTTP/1.1 200 OK\\nContent-Type: text/html\\n\\n<h1>Hello from USB Coding Expert!</h1>" | nc -l -p 8080\n    break\ndone',
+            file: '#!/bin/bash\nread -p "Enter filename: " file\necho "Hello from USB Coding Expert!" > "$file"\necho "Contents of $file:"\ncat "$file"',
+            token: '#!/bin/bash\n# ERC-20 token deployment script\n# Requires: geth, solc\necho "Compiling contract..."\nsolc --bin --abi Token.sol -o build/\necho "Deploying to network..."\ngeth attach --exec "eth.sendTransaction({from: eth.accounts[0], data: \'0x$(cat build/Token.bin)\'})"'
+        },
+        solidity: {
+            reverse: 'pragma solidity ^0.8.0;\n\ncontract StringReverse {\n    function reverseString(string memory s) public pure returns (string memory) {\n        bytes memory b = bytes(s);\n        bytes memory result = new bytes(b.length);\n        for (uint i = 0; i < b.length; i++) {\n            result[i] = b[b.length - 1 - i];\n        }\n        return string(result);\n    }\n}',
+            http: '// HTTP server in Solidity is not possible\n// Use an oracle or off-chain server instead\npragma solidity ^0.8.0;\n\ncontract HTTPEvent {\n    event Request(string url, string method);\n    function logRequest(string memory url, string memory method) public {\n        emit Request(url, method);\n    }\n}',
+            file: 'pragma solidity ^0.8.0;\n\ncontract FileStorage {\n    mapping(string => string) private files;\n    function writeFile(string memory name, string memory content) public {\n        files[name] = content;\n    }\n    function readFile(string memory name) public view returns (string memory) {\n        return files[name];\n    }\n}',
+            token: 'pragma solidity ^0.8.0;\n\ncontract MyToken {\n    string public name = "MyToken";\n    string public symbol = "MTK";\n    uint8 public decimals = 18;\n    uint256 public totalSupply;\n    mapping(address => uint256) public balanceOf;\n    mapping(address => mapping(address => uint256)) public allowance;\n    event Transfer(address indexed from, address indexed to, uint256 value);\n    event Approval(address indexed owner, address indexed spender, uint256 value);\n    constructor(uint256 _initialSupply) {\n        totalSupply = _initialSupply * 10 ** uint256(decimals);\n        balanceOf[msg.sender] = totalSupply;\n        emit Transfer(address(0), msg.sender, totalSupply);\n    }\n    function transfer(address _to, uint256 _value) public returns (bool) {\n        require(balanceOf[msg.sender] >= _value, "Insufficient balance");\n        balanceOf[msg.sender] -= _value;\n        balanceOf[_to] += _value;\n        emit Transfer(msg.sender, _to, _value);\n        return true;\n    }\n    function approve(address _spender, uint256 _value) public returns (bool) {\n        allowance[msg.sender][_spender] = _value;\n        emit Approval(msg.sender, _spender, _value);\n        return true;\n    }\n    function transferFrom(address _from, address _to, uint256 _value) public returns (bool) {\n        require(allowance[_from][msg.sender] >= _value, "Insufficient allowance");\n        require(balanceOf[_from] >= _value, "Insufficient balance");\n        allowance[_from][msg.sender] -= _value;\n        balanceOf[_from] -= _value;\n        balanceOf[_to] += _value;\n        emit Transfer(_from, _to, _value);\n        return true;\n    }\n}'
+        }
+    };
+
+    function generateCode() {
+        var input = document.getElementById('code-input').value.trim();
+        if (!input) {
+            document.getElementById('code-status').textContent = 'Please describe what you want first.';
+            return;
+        }
+        var key = 'reverse';
+        if (input.toLowerCase().includes('http') || input.toLowerCase().includes('server')) key = 'http';
+        else if (input.toLowerCase().includes('file') || input.toLowerCase().includes('read') || input.toLowerCase().includes('write')) key = 'file';
+        else if (input.toLowerCase().includes('token') || input.toLowerCase().includes('erc') || input.toLowerCase().includes('solidity')) key = 'token';
+        else if (input.toLowerCase().includes('reverse') || input.toLowerCase().includes('string')) key = 'reverse';
+
+        var code = templates[lang][key] || templates[lang].reverse;
+        document.getElementById('code-content').textContent = code;
+        document.getElementById('code-output').value = code;
+        document.getElementById('code-status').textContent = 'Generated ' + lang + ' code for: ' + input.substring(0, 50);
+    }
+
+    function copyCode() {
+        var code = document.getElementById('code-output').value;
+        if (!code) return;
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(code).then(function() {
+                var btn = document.getElementById('copy-btn');
+                btn.textContent = '✓ Copied!';
+                setTimeout(function() { btn.textContent = '📋 Copy Code'; }, 2000);
+            });
+        } else {
+            document.getElementById('code-output').select();
+            document.execCommand('copy');
+            var btn = document.getElementById('copy-btn');
+            btn.textContent = '✓ Copied!';
+            setTimeout(function() { btn.textContent = '📋 Copy Code'; }, 2000);
+        }
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.lang-btn').forEach(function(b) {
+                b.style.background = '#2a2a2a';
+                b.style.color = '#ccc';
+                b.style.border = '1px solid #444';
+            });
+            btn.style.background = '#f0c040';
+            btn.style.color = '#000';
+            btn.style.border = 'none';
+            lang = btn.getAttribute('data-lang');
+        });
+    });
+
+    document.querySelectorAll('.preset-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var key = btn.getAttribute('data-preset');
+            document.getElementById('code-input').value = presets[key];
+            generateCode();
+        });
+    });
+
+    document.getElementById('generate-btn').addEventListener('click', generateCode);
+    document.getElementById('copy-btn').addEventListener('click', copyCode);
+    document.getElementById('code-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            generateCode();
+        }
+    });
+})();
+</script>
 </body>
 </html>
