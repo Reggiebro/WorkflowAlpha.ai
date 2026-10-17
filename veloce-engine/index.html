@@ -140,21 +140,20 @@
     <section id="demo-preview">
         <div class="container">
             <h2>See Veloce-Engine in action</h2>
-            <p>A quick look at the dashboard your team will use every day. Reservations, staff, and shifts — all in one view.</p>
+            <p>A fully functional reservation manager — add, edit, delete, and manage reservations in real time. This is a live demo of the dashboard your team will use every day.</p>
 
-            <!-- CSS-only mock dashboard -->
             <div class="mock-dashboard">
-                <!-- Mock top bar -->
+                <!-- Top bar -->
                 <div class="mock-topbar">
                     <div class="mock-logo">⚡ Veloce-Engine</div>
                     <div class="mock-topbar-right">
-                        <span class="mock-notif">🔔 3</span>
+                        <span class="mock-notif">🔔 <span id="notif-count">3</span></span>
                         <span class="mock-avatar">JD</span>
                     </div>
                 </div>
 
                 <div class="mock-body">
-                    <!-- Mock sidebar -->
+                    <!-- Sidebar -->
                     <div class="mock-sidebar">
                         <div class="mock-nav-item active">📊 Dashboard</div>
                         <div class="mock-nav-item">📋 Reservations</div>
@@ -163,106 +162,105 @@
                         <div class="mock-nav-item">⚙️ Settings</div>
                     </div>
 
-                    <!-- Mock main content -->
+                    <!-- Main content -->
                     <div class="mock-main">
                         <!-- Stats row -->
                         <div class="mock-stats">
                             <div class="mock-stat-card">
-                                <div class="mock-stat-num">24</div>
-                                <div class="mock-stat-label">Today's Reservations</div>
+                                <div class="mock-stat-num" id="stat-reservations">0</div>
+                                <div class="mock-stat-label">Total Reservations</div>
                             </div>
                             <div class="mock-stat-card">
-                                <div class="mock-stat-num">8</div>
-                                <div class="mock-stat-label">Staff On Shift</div>
+                                <div class="mock-stat-num" id="stat-pending">0</div>
+                                <div class="mock-stat-label">Pending</div>
                             </div>
                             <div class="mock-stat-card">
-                                <div class="mock-stat-num">3</div>
-                                <div class="mock-stat-label">Pending Requests</div>
+                                <div class="mock-stat-num" id="stat-confirmed">0</div>
+                                <div class="mock-stat-label">Confirmed</div>
                             </div>
                             <div class="mock-stat-card">
-                                <div class="mock-stat-num">96%</div>
-                                <div class="mock-stat-label">Table Occupancy</div>
+                                <div class="mock-stat-num" id="stat-staff-online">0</div>
+                                <div class="mock-stat-label">Staff Online</div>
                             </div>
                         </div>
 
-                        <!-- Reservations table -->
+                        <!-- Add Reservation Form -->
                         <div class="mock-panel">
-                            <div class="mock-panel-title">📋 Today's Reservations</div>
-                            <table class="mock-table">
-                                <thead>
-                                    <tr><th>Time</th><th>Guest</th><th>Party</th><th>Table</th><th>Status</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>12:00</td><td>Maria Garcia</td><td>4</td><td>T3</td><td class="mock-status confirmed">Confirmed</td></tr>
-                                    <tr><td>12:30</td><td>James Wilson</td><td>2</td><td>T1</td><td class="mock-status confirmed">Confirmed</td></tr>
-                                    <tr><td>13:00</td><td>Aisha Patel</td><td>6</td><td>T7</td><td class="mock-status pending">Pending</td></tr>
-                                    <tr><td>13:30</td><td>Carlos Ruiz</td><td>2</td><td>T2</td><td class="mock-status confirmed">Confirmed</td></tr>
-                                    <tr><td>14:00</td><td>Emma Chen</td><td>4</td><td>T5</td><td class="mock-status seated">Seated</td></tr>
-                                    <tr><td>14:30</td><td>Liam O'Brien</td><td>8</td><td>T9</td><td class="mock-status pending">Pending</td></tr>
-                                </tbody>
-                            </table>
+                            <div class="mock-panel-title">➕ Add New Reservation</div>
+                            <form id="reservation-form" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:10px; align-items:end;">
+                                <div>
+                                    <label style="display:block; font-size:0.75rem; color:#888; margin-bottom:4px;">Guest Name</label>
+                                    <input type="text" id="res-name" required placeholder="John Doe" style="width:100%; padding:8px 10px; background:#0f0f0f; border:1px solid #2a2a2a; border-radius:6px; color:#e0e0e0; font-size:0.85rem;">
+                                </div>
+                                <div>
+                                    <label style="display:block; font-size:0.75rem; color:#888; margin-bottom:4px;">Phone</label>
+                                    <input type="tel" id="res-phone" required placeholder="+1 555-0123" style="width:100%; padding:8px 10px; background:#0f0f0f; border:1px solid #2a2a2a; border-radius:6px; color:#e0e0e0; font-size:0.85rem;">
+                                </div>
+                                <div>
+                                    <label style="display:block; font-size:0.75rem; color:#888; margin-bottom:4px;">Date</label>
+                                    <input type="date" id="res-date" required style="width:100%; padding:8px 10px; background:#0f0f0f; border:1px solid #2a2a2a; border-radius:6px; color:#e0e0e0; font-size:0.85rem;">
+                                </div>
+                                <div>
+                                    <label style="display:block; font-size:0.75rem; color:#888; margin-bottom:4px;">Time</label>
+                                    <input type="time" id="res-time" required style="width:100%; padding:8px 10px; background:#0f0f0f; border:1px solid #2a2a2a; border-radius:6px; color:#e0e0e0; font-size:0.85rem;">
+                                </div>
+                                <div>
+                                    <label style="display:block; font-size:0.75rem; color:#888; margin-bottom:4px;">Party Size</label>
+                                    <input type="number" id="res-party" required min="1" max="20" value="2" style="width:100%; padding:8px 10px; background:#0f0f0f; border:1px solid #2a2a2a; border-radius:6px; color:#e0e0e0; font-size:0.85rem;">
+                                </div>
+                                <div style="grid-column:1/-1;">
+                                    <label style="display:block; font-size:0.75rem; color:#888; margin-bottom:4px;">Special Requests</label>
+                                    <input type="text" id="res-requests" placeholder="Allergies, window seat, etc." style="width:100%; padding:8px 10px; background:#0f0f0f; border:1px solid #2a2a2a; border-radius:6px; color:#e0e0e0; font-size:0.85rem;">
+                                </div>
+                                <div style="grid-column:1/-1;">
+                                    <button type="submit" style="padding:10px 24px; background:#f0c040; color:#000; border:none; border-radius:6px; font-weight:600; font-size:0.9rem; cursor:pointer;">Add Reservation</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Reservations Table -->
+                        <div class="mock-panel">
+                            <div class="mock-panel-title">📋 Reservations</div>
+                            <div style="overflow-x:auto;">
+                                <table class="mock-table" id="reservations-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Guest</th>
+                                            <th>Phone</th>
+                                            <th>Party</th>
+                                            <th>Requests</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reservations-tbody">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="no-reservations" style="display:none; text-align:center; padding:20px; color:#666; font-size:0.9rem;">No reservations yet — add one above.</div>
                         </div>
 
                         <!-- Staff & Shifts row -->
                         <div class="mock-two-col">
                             <div class="mock-panel">
                                 <div class="mock-panel-title">👥 Staff On Duty</div>
-                                <div class="mock-staff-list">
-                                    <div class="mock-staff-item">
-                                        <span class="mock-staff-avatar" style="background:#f0c040;">JD</span>
-                                        <div><strong>John Doe</strong><br><span class="mock-staff-role">Manager</span></div>
-                                        <span class="mock-staff-status online">●</span>
-                                    </div>
-                                    <div class="mock-staff-item">
-                                        <span class="mock-staff-avatar" style="background:#4a9eff;">SM</span>
-                                        <div><strong>Sarah Miller</strong><br><span class="mock-staff-role">Server</span></div>
-                                        <span class="mock-staff-status online">●</span>
-                                    </div>
-                                    <div class="mock-staff-item">
-                                        <span class="mock-staff-avatar" style="background:#e05555;">AK</span>
-                                        <div><strong>Alex Kim</strong><br><span class="mock-staff-role">Kitchen</span></div>
-                                        <span class="mock-staff-status online">●</span>
-                                    </div>
-                                    <div class="mock-staff-item">
-                                        <span class="mock-staff-avatar" style="background:#50c878;">LN</span>
-                                        <div><strong>Lisa Nguyen</strong><br><span class="mock-staff-role">Bartender</span></div>
-                                        <span class="mock-staff-status break">●</span>
-                                    </div>
-                                    <div class="mock-staff-item">
-                                        <span class="mock-staff-avatar" style="background:#9b59b6;">MR</span>
-                                        <div><strong>Mike Ross</strong><br><span class="mock-staff-role">Host</span></div>
-                                        <span class="mock-staff-status offline">●</span>
-                                    </div>
+                                <div class="mock-staff-list" id="staff-list">
                                 </div>
                             </div>
 
                             <div class="mock-panel">
                                 <div class="mock-panel-title">🔄 Shift Schedule</div>
-                                <div class="mock-shift-list">
-                                    <div class="mock-shift-item">
-                                        <span class="mock-shift-time">10:00 – 18:00</span>
-                                        <span class="mock-shift-name">John Doe</span>
-                                        <span class="mock-shift-role">Manager</span>
-                                    </div>
-                                    <div class="mock-shift-item">
-                                        <span class="mock-shift-time">11:00 – 19:00</span>
-                                        <span class="mock-shift-name">Sarah Miller</span>
-                                        <span class="mock-shift-role">Server</span>
-                                    </div>
-                                    <div class="mock-shift-item">
-                                        <span class="mock-shift-time">11:00 – 23:00</span>
-                                        <span class="mock-shift-name">Alex Kim</span>
-                                        <span class="mock-shift-role">Kitchen</span>
-                                    </div>
-                                    <div class="mock-shift-item">
-                                        <span class="mock-shift-time">14:00 – 22:00</span>
-                                        <span class="mock-shift-name">Lisa Nguyen</span>
-                                        <span class="mock-shift-role">Bartender</span>
-                                    </div>
-                                    <div class="mock-shift-item">
-                                        <span class="mock-shift-time">16:00 – 00:00</span>
-                                        <span class="mock-shift-name">Mike Ross</span>
-                                        <span class="mock-shift-role">Host</span>
+                                <div class="mock-shift-list" id="shift-list">
+                                </div>
+                                <div style="margin-top:12px; padding-top:12px; border-top:1px solid #2a2a2a;">
+                                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                                        <select id="shift-staff" style="padding:6px 10px; background:#0f0f0f; border:1px solid #2a2a2a; border-radius:6px; color:#e0e0e0; font-size:0.8rem; flex:1; min-width:100px;">
+                                        </select>
+                                        <input type="time" id="shift-start" style="padding:6px 10px; background:#0f0f0f; border:1px solid #2a2a2a; border-radius:6px; color:#e0e0e0; font-size:0.8rem;">
+                                        <input type="time" id="shift-end" style="padding:6px 10px; background:#0f0f0f; border:1px solid #2a2a2a; border-radius:6px; color:#e0e0e0; font-size:0.8rem;">
+                                        <button id="add-shift-btn" style="padding:6px 14px; background:#f0c040; color:#000; border:none; border-radius:6px; font-weight:600; font-size:0.8rem; cursor:pointer;">Add</button>
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +270,7 @@
             </div>
 
             <div style="text-align:center; margin-top:24px;">
-                <a href="#contact" class="cta">View Live Demo →</a>
+                <a href="#contact" class="cta">Get Veloce-Engine →</a>
             </div>
         </div>
     </section>
@@ -394,5 +392,192 @@
             <p style="margin-top:8px; color:#444;">Contact: <a href="mailto:workflowalpha.ai@gmail.com" style="color:#555;">workflowalpha.ai@gmail.com</a></p>
         </div>
     </footer>
+<script>
+    // ===== Veloce-Engine Interactive Demo =====
+
+    // --- Data ---
+    let reservations = [
+        { id: 1, name: 'Maria Garcia', phone: '+1 555-0101', date: '2026-10-17', time: '12:00', party: 4, requests: 'Window seat', status: 'Confirmed' },
+        { id: 2, name: 'James Wilson', phone: '+1 555-0102', date: '2026-10-17', time: '12:30', party: 2, requests: '', status: 'Confirmed' },
+        { id: 3, name: 'Aisha Patel', phone: '+1 555-0103', date: '2026-10-17', time: '13:00', party: 6, requests: 'Birthday cake', status: 'Pending' },
+        { id: 4, name: 'Carlos Ruiz', phone: '+1 555-0104', date: '2026-10-17', time: '13:30', party: 2, requests: 'Gluten-free menu', status: 'Seated' }
+    ];
+
+    let staff = [
+        { id: 1, name: 'John Doe', role: 'Manager', status: 'online', color: '#f0c040' },
+        { id: 2, name: 'Sarah Miller', role: 'Server', status: 'online', color: '#4a9eff' },
+        { id: 3, name: 'Alex Kim', role: 'Kitchen', status: 'online', color: '#e05555' },
+        { id: 4, name: 'Lisa Nguyen', role: 'Bartender', status: 'break', color: '#50c878' },
+        { id: 5, name: 'Mike Ross', role: 'Host', status: 'offline', color: '#9b59b6' }
+    ];
+
+    let shifts = [
+        { id: 1, staffId: 1, start: '10:00', end: '18:00' },
+        { id: 2, staffId: 2, start: '11:00', end: '19:00' },
+        { id: 3, staffId: 3, start: '11:00', end: '23:00' },
+        { id: 4, staffId: 4, start: '14:00', end: '22:00' },
+        { id: 5, staffId: 5, start: '16:00', end: '00:00' }
+    ];
+
+    let nextResId = 5;
+    let nextShiftId = 6;
+
+    // --- DOM refs ---
+    const tbody = document.getElementById('reservations-tbody');
+    const noReservations = document.getElementById('no-reservations');
+    const form = document.getElementById('reservation-form');
+    const staffList = document.getElementById('staff-list');
+    const shiftList = document.getElementById('shift-list');
+    const shiftStaffSelect = document.getElementById('shift-staff');
+    const addShiftBtn = document.getElementById('add-shift-btn');
+
+    // --- Render: Reservations ---
+    function renderReservations() {
+        tbody.innerHTML = '';
+        noReservations.style.display = reservations.length === 0 ? 'block' : 'none';
+
+        reservations.forEach(res => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${res.date}</td>
+                <td>${res.time}</td>
+                <td>${res.name}</td>
+                <td>${res.phone}</td>
+                <td>${res.party}</td>
+                <td>${res.requests || '—'}</td>
+                <td>
+                    <select onchange="updateStatus(${res.id}, this.value)" style="background:#0f0f0f; border:1px solid #2a2a2a; border-radius:4px; color:#e0e0e0; font-size:0.8rem; padding:2px 6px;">
+                        <option value="Pending" ${res.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                        <option value="Confirmed" ${res.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
+                        <option value="Seated" ${res.status === 'Seated' ? 'selected' : ''}>Seated</option>
+                        <option value="Completed" ${res.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                    </select>
+                </td>
+                <td><button onclick="deleteReservation(${res.id})" style="background:none; border:none; color:#e05555; cursor:pointer; font-size:1rem; padding:4px;">✕</button></td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        updateStats();
+    }
+
+    // --- Render: Stats ---
+    function updateStats() {
+        document.getElementById('stat-reservations').textContent = reservations.length;
+        document.getElementById('stat-pending').textContent = reservations.filter(r => r.status === 'Pending').length;
+        document.getElementById('stat-confirmed').textContent = reservations.filter(r => r.status === 'Confirmed').length;
+        document.getElementById('stat-staff-online').textContent = staff.filter(s => s.status === 'online').length;
+    }
+
+    // --- Render: Staff ---
+    function renderStaff() {
+        staffList.innerHTML = '';
+        staff.forEach(s => {
+            const div = document.createElement('div');
+            div.className = 'mock-staff-item';
+            const initials = s.name.split(' ').map(w => w[0]).join('');
+            const statusLabel = s.status === 'online' ? 'Online' : s.status === 'break' ? 'Break' : 'Offline';
+            div.innerHTML = `
+                <span class="mock-staff-avatar" style="background:${s.color};">${initials}</span>
+                <div><strong>${s.name}</strong><br><span class="mock-staff-role">${s.role}</span></div>
+                <span class="mock-staff-status ${s.status}" style="cursor:pointer;" onclick="toggleStaffStatus(${s.id})" title="Click to toggle">● ${statusLabel}</span>
+            `;
+            staffList.appendChild(div);
+        });
+        updateStats();
+    }
+
+    // --- Render: Shifts ---
+    function renderShifts() {
+        shiftList.innerHTML = '';
+        shifts.forEach(sh => {
+            const s = staff.find(st => st.id === sh.staffId);
+            const div = document.createElement('div');
+            div.className = 'mock-shift-item';
+            div.innerHTML = `
+                <span class="mock-shift-time">${sh.start} – ${sh.end}</span>
+                <span class="mock-shift-name">${s ? s.name : 'Unknown'}</span>
+                <span class="mock-shift-role">${s ? s.role : ''}</span>
+                <button onclick="deleteShift(${sh.id})" style="background:none; border:none; color:#e05555; cursor:pointer; font-size:0.9rem; padding:2px 6px;">✕</button>
+            `;
+            shiftList.appendChild(div);
+        });
+
+        // Update staff dropdown
+        shiftStaffSelect.innerHTML = '';
+        staff.forEach(s => {
+            const opt = document.createElement('option');
+            opt.value = s.id;
+            opt.textContent = `${s.name} (${s.role})`;
+            shiftStaffSelect.appendChild(opt);
+        });
+    }
+
+    // --- CRUD: Reservations ---
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const res = {
+            id: nextResId++,
+            name: document.getElementById('res-name').value,
+            phone: document.getElementById('res-phone').value,
+            date: document.getElementById('res-date').value,
+            time: document.getElementById('res-time').value,
+            party: parseInt(document.getElementById('res-party').value),
+            requests: document.getElementById('res-requests').value,
+            status: 'Pending'
+        };
+        reservations.push(res);
+        form.reset();
+        document.getElementById('res-party').value = 2;
+        renderReservations();
+    });
+
+    function deleteReservation(id) {
+        reservations = reservations.filter(r => r.id !== id);
+        renderReservations();
+    }
+
+    function updateStatus(id, newStatus) {
+        const res = reservations.find(r => r.id === id);
+        if (res) {
+            res.status = newStatus;
+            renderReservations();
+        }
+    }
+
+    // --- CRUD: Staff ---
+    function toggleStaffStatus(id) {
+        const s = staff.find(st => st.id === id);
+        if (s) {
+            const order = ['online', 'break', 'offline'];
+            const idx = order.indexOf(s.status);
+            s.status = order[(idx + 1) % order.length];
+            renderStaff();
+        }
+    }
+
+    // --- CRUD: Shifts ---
+    addShiftBtn.addEventListener('click', function() {
+        const staffId = parseInt(shiftStaffSelect.value);
+        const start = document.getElementById('shift-start').value;
+        const end = document.getElementById('shift-end').value;
+        if (staffId && start && end) {
+            shifts.push({ id: nextShiftId++, staffId, start, end });
+            document.getElementById('shift-start').value = '';
+            document.getElementById('shift-end').value = '';
+            renderShifts();
+        }
+    });
+
+    function deleteShift(id) {
+        shifts = shifts.filter(s => s.id !== id);
+        renderShifts();
+    }
+
+    // --- Init ---
+    renderReservations();
+    renderStaff();
+    renderShifts();
+</script>
 </body>
 </html>

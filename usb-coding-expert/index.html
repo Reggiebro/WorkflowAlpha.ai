@@ -117,62 +117,52 @@
     </section>
 
     <section id="demo-preview">
-        <div class="container">
-            <h2>Live Demo</h2>
-            <p>Watch USB Coding Expert in action — boot from USB and start generating code instantly.</p>
-            <div class="demo-box" style="background:#0a0a0a; border:1px solid #333; border-radius:10px; padding:0; margin:20px 0; overflow:hidden;">
-                <div class="demo-box-header" style="background:#1a1a1a; padding:10px 16px; display:flex; gap:8px; align-items:center; border-bottom:1px solid #333;">
-                    <span class="dot" style="width:12px;height:12px;border-radius:50%;background:#ff5f56;"></span>
-                    <span class="dot" style="width:12px;height:12px;border-radius:50%;background:#ffbd2e;"></span>
-                    <span class="dot" style="width:12px;height:12px;border-radius:50%;background:#27c93f;"></span>
-                    <span style="margin-left:12px; color:#888; font-size:0.8rem; font-family:monospace;">USB Coding Expert — AI Assistant</span>
-                </div>
-                <div class="demo-box-body" style="padding:20px; font-family:'Courier New', monospace; font-size:0.85rem; line-height:1.8; text-align:left; min-height:320px;">
-                    <div style="color:#555;">[BOOT] Loading model from USB... done</div>
-                    <div style="color:#555;">[BOOT] Initializing runtime environment... done</div>
-                    <div style="color:#555;">[BOOT] Air-gapped mode confirmed. No network detected.</div>
-                    <div style="color:#555;">[BOOT] Ready. Type 'help' for commands.</div>
-                    <div style="margin-top:12px;"><span style="color:#f0c040;">user@usb-expert</span><span style="color:#555;">:~$</span> <span style="color:#e0e0e0;">generate python script to scan a network</span></div>
-                    <div style="margin-top:8px;"><span style="color:#27c93f;">usb-expert</span><span style="color:#555;">:~$</span> <span style="color:#e0e0e0;">Generating...</span></div>
-                    <div style="margin-top:8px; padding-left:20px; border-left:2px solid #333;">
-                        <div><span style="color:#666;">import</span> <span style="color:#f0c040;">socket</span></div>
-                        <div><span style="color:#666;">import</span> <span style="color:#f0c040;">argparse</span></div>
-                        <div style="margin-top:4px;"><span style="color:#666;">def</span> <span style="color:#e0e040;">scan_network</span><span style="color:#e0e0e0;">(cidr):</span></div>
-                        <div style="padding-left:20px;"><span style="color:#666;">"""Scan a /24 subnet for live hosts."""</span></div>
-                        <div style="padding-left:20px;"><span style="color:#e0e0e0;">network = ipaddress.ip_network(cidr)</span></div>
-                        <div style="padding-left:20px;"><span style="color:#666;">for</span> <span style="color:#e0e0e0;">host in network.hosts():</span></div>
-                        <div style="padding-left:40px;"><span style="color:#e0e0e0;">s = socket.socket(AF_INET, SOCK_STREAM)</span></div>
-                        <div style="padding-left:40px;"><span style="color:#e0e0e0;">s.settimeout(0.5)</span></div>
-                        <div style="padding-left:40px;"><span style="color:#e0e0e0;">result = s.connect_ex((str(host), 80))</span></div>
-                        <div style="padding-left:40px;"><span style="color:#666;">if</span> <span style="color:#e0e0e0;">result == 0:</span></div>
-                        <div style="padding-left:60px;"><span style="color:#e0e0e0;">print(f"{{host}} — open")</span></div>
-                        <div style="padding-left:40px;"><span style="color:#e0e0e0;">s.close()</span></div>
+            <div class="container">
+                <h2>Live Demo — Code Generator</h2>
+                <p>Describe what you want in plain English, pick a language, and generate real working code instantly.</p>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0;">
+                    <!-- Input Panel -->
+                    <div style="background:#1a1a1a; border:1px solid #333; border-radius:10px; padding:20px;">
+                        <label style="display:block; color:#f0c040; font-weight:600; margin-bottom:8px; font-size:0.9rem;">Describe what you want:</label>
+                        <textarea id="code-input" rows="3" placeholder="e.g. Create a function that reverses a string" style="width:100%; background:#0a0a0a; border:1px solid #333; border-radius:6px; color:#e0e0e0; padding:10px; font-family:monospace; font-size:0.85rem; resize:vertical; outline:none;"></textarea>
+
+                        <label style="display:block; color:#f0c040; font-weight:600; margin:12px 0 8px; font-size:0.9rem;">Language:</label>
+                        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                            <button class="lang-btn active" data-lang="python" style="background:#f0c040; color:#000; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:0.85rem;">Python</button>
+                            <button class="lang-btn" data-lang="javascript" style="background:#2a2a2a; color:#ccc; border:1px solid #444; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:0.85rem;">JavaScript</button>
+                            <button class="lang-btn" data-lang="bash" style="background:#2a2a2a; color:#ccc; border:1px solid #444; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:0.85rem;">Bash</button>
+                            <button class="lang-btn" data-lang="solidity" style="background:#2a2a2a; color:#ccc; border:1px solid #444; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:0.85rem;">Solidity</button>
+                        </div>
+
+                        <button id="generate-btn" style="width:100%; margin-top:16px; background:#f0c040; color:#000; border:none; padding:14px; border-radius:8px; font-weight:700; font-size:1rem; cursor:pointer;">⚡ Generate Code</button>
+
+                        <div style="margin-top:16px;">
+                            <div style="color:#888; font-size:0.8rem; margin-bottom:8px;">Quick presets:</div>
+                            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                                <button class="preset-btn" data-preset="reverse" style="background:#222; color:#aaa; border:1px solid #333; padding:6px 12px; border-radius:4px; cursor:pointer; font-size:0.75rem;">Reverse string</button>
+                                <button class="preset-btn" data-preset="http" style="background:#222; color:#aaa; border:1px solid #333; padding:6px 12px; border-radius:4px; cursor:pointer; font-size:0.75rem;">HTTP server</button>
+                                <button class="preset-btn" data-preset="file" style="background:#222; color:#aaa; border:1px solid #333; padding:6px 12px; border-radius:4px; cursor:pointer; font-size:0.75rem;">File read/write</button>
+                                <button class="preset-btn" data-preset="token" style="background:#222; color:#aaa; border:1px solid #333; padding:6px 12px; border-radius:4px; cursor:pointer; font-size:0.75rem;">ERC-20 token</button>
+                            </div>
+                        </div>
                     </div>
-                    <div style="margin-top:12px;"><span style="color:#27c93f;">usb-expert</span><span style="color:#555;">:~$</span> <span style="color:#e0e0e0;">Done. Script ready to deploy.</span></div>
-                    <div style="margin-top:8px;"><span style="color:#555;">✔ Scan complete: 254 hosts checked</span></div>
-                    <div style="margin-top:4px;"><span style="color:#555;">✔ 3 live hosts found on ports 80, 443, 22</span></div>
-                    <div style="margin-top:4px;"><span style="color:#555;">✔ No data transmitted externally</span></div>
+
+                    <!-- Output Panel -->
+                    <div style="background:#1a1a1a; border:1px solid #333; border-radius:10px; padding:20px; display:flex; flex-direction:column;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                            <label style="color:#f0c040; font-weight:600; font-size:0.9rem;">Generated Code:</label>
+                            <button id="copy-btn" style="background:#2a2a2a; color:#ccc; border:1px solid #444; padding:6px 14px; border-radius:6px; cursor:pointer; font-size:0.8rem;">📋 Copy Code</button>
+                        </div>
+                        <div style="position:relative; flex:1; min-height:340px;">
+                            <pre id="code-highlight" style="position:absolute; top:0; left:0; right:0; bottom:0; margin:0; padding:16px; background:#0a0a0a; border:1px solid #333; border-radius:6px; overflow:auto; font-family:'Courier New',monospace; font-size:0.82rem; line-height:1.7; color:#e0e0e0; white-space:pre; pointer-events:none;"><code id="code-content"></code></pre>
+                            <textarea id="code-output" readonly style="position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%; padding:16px; background:transparent; border:1px solid #333; border-radius:6px; color:transparent; caret-color:#f0c040; font-family:'Courier New',monospace; font-size:0.82rem; line-height:1.7; resize:none; outline:none; white-space:pre; overflow:auto;"></textarea>
+                        </div>
+                        <div id="code-status" style="color:#555; font-size:0.75rem; margin-top:8px;">Ready — describe something and click Generate.</div>
+                    </div>
                 </div>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; margin-top:16px;">
-                <div class="feature-card" style="text-align:center;">
-                    <div style="font-size:1.8rem; margin-bottom:8px;">⚡</div>
-                    <div style="color:#fff; font-weight:500; margin-bottom:4px;">Instant boot</div>
-                    <div style="color:#888; font-size:0.85rem;">Under 60 seconds from USB to working assistant</div>
-                </div>
-                <div class="feature-card" style="text-align:center;">
-                    <div style="font-size:1.8rem; margin-bottom:8px;">🧠</div>
-                    <div style="color:#fff; font-weight:500; margin-bottom:4px;">Autonomous</div>
-                    <div style="color:#888; font-size:0.85rem;">No cloud. No API keys. Fully offline operation</div>
-                </div>
-                <div class="feature-card" style="text-align:center;">
-                    <div style="font-size:1.8rem; margin-bottom:8px;">🔒</div>
-                    <div style="color:#fff; font-weight:500; margin-bottom:4px;">Secure</div>
-                    <div style="color:#888; font-size:0.85rem;">Air-gapped by design. Zero network connectivity</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <section id="package">
         <div class="container">
