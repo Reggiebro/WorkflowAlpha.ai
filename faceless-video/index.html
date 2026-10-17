@@ -147,6 +147,44 @@
         #thumb4:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
         #thumb5:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
         #thumb6:checked ~ .demo-grid .player-screen { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+    /* ===== Script Generator ===== */
+        .script-generator { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; padding: 28px; margin: 24px 0; }
+        .script-generator h3 { color: #fff; font-size: 1rem; margin-bottom: 16px; }
+        .sg-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+        .sg-field { flex: 1; min-width: 200px; }
+        .sg-field label { display: block; color: #888; font-size: 0.8rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .sg-field input[type="text"] { width: 100%; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; color: #e0e0e0; padding: 10px 14px; font-size: 0.95rem; transition: border-color 0.2s; }
+        .sg-field input[type="text"]:focus { outline: none; border-color: #f0c040; }
+        .sg-btn { background: #f0c040; color: #000; border: none; padding: 12px 28px; border-radius: 6px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+        .sg-btn:hover { background: #e0b030; }
+        .sg-btn:active { transform: scale(0.98); }
+        .sg-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .sg-options { display: flex; gap: 10px; flex-wrap: wrap; }
+        .sg-chip { background: #1a1a1a; border: 1px solid #333; color: #ccc; padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; user-select: none; }
+        .sg-chip:hover { border-color: #666; }
+        .sg-chip.selected { border-color: #f0c040; color: #f0c040; background: rgba(240,192,64,0.08); }
+        .sg-result { display: none; margin-top: 24px; }
+        .sg-result.visible { display: block; }
+        .sg-section { background: #111; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+        .sg-section-label { display: inline-block; background: #f0c040; color: #000; font-size: 0.65rem; font-weight: 700; padding: 2px 10px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .sg-section-text { color: #d0d0d0; font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; }
+        .sg-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        @media (max-width: 720px) { .sg-meta { grid-template-columns: 1fr; } }
+        .sg-meta-box { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 14px 18px; }
+        .sg-meta-box h4 { color: #f0c040; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .sg-meta-box p { color: #ccc; font-size: 0.9rem; margin: 0; }
+        .sg-copy-btn { background: #2a2a2a; color: #f0c040; border: 1px solid #f0c040; padding: 8px 18px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s, color 0.2s; margin-bottom: 16px; }
+        .sg-copy-btn:hover { background: #f0c040; color: #000; }
+        .sg-copy-btn.copied { background: #43e97b; border-color: #43e97b; color: #000; }
+
+        /* Canvas preview */
+        .canvas-preview { background: #000; border: 1px solid #333; border-radius: 10px; overflow: hidden; margin-top: 24px; }
+        .canvas-preview canvas { display: block; width: 100%; }
+        .canvas-controls { background: #111; padding: 10px 14px; display: flex; align-items: center; gap: 12px; border-top: 1px solid #2a2a2a; }
+        .canvas-controls button { background: #2a2a2a; color: #ccc; border: 1px solid #333; padding: 6px 14px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+        .canvas-controls button:hover { color: #f0c040; border-color: #f0c040; }
+        .canvas-status { color: #888; font-size: 0.75rem; margin-left: auto; }
+        .canvas-status.playing { color: #43e97b; }
     </style>
 </head>
 <body>
@@ -202,87 +240,65 @@
     </section>
 
     <section id="demo-preview">
-        <input type="checkbox" class="demo-input" id="demoPlay">
-        <input type="radio" class="demo-input" name="thumb" id="thumb1" checked>
-        <input type="radio" class="demo-input" name="thumb" id="thumb2">
-        <input type="radio" class="demo-input" name="thumb" id="thumb3">
-        <input type="radio" class="demo-input" name="thumb" id="thumb4">
-        <input type="radio" class="demo-input" name="thumb" id="thumb5">
-        <input type="radio" class="demo-input" name="thumb" id="thumb6">
-        <input type="radio" class="demo-input" name="title" id="title1" checked>
-        <input type="radio" class="demo-input" name="title" id="title2">
-        <input type="radio" class="demo-input" name="title" id="title3">
-        <input type="radio" class="demo-input" name="title" id="title4">
-        <input type="radio" class="demo-input" name="title" id="title5">
-        <input type="radio" class="demo-input" name="title" id="title6">
         <div class="container">
-            <h2>See it in action</h2>
-            <p>Here's a preview of the type of faceless video content the automation produces. Click play to watch a sample, or browse the thumbnail gallery below.</p>
-            <div class="demo-grid">
-                <div>
-                    <div class="player-mockup">
-                        <div class="player-screen" id="playerScreen">
-                            <div class="screen-overlay top-left"><span class="badge-live">● REC</span></div>
-                            <div class="screen-overlay bottom-right"><span class="platform-tag">YouTube</span></div>
-                            <div class="frame-content frame-anim" id="frameContent">
-                                <div class="hook">5 Habits That Quietly Changed My Life</div>
-                                <div class="subline">You won't believe #3...</div>
-                            </div>
-                            <div class="cta-overlay" id="ctaOverlay">🔔 Subscribe for more</div>
-                            <label class="play-btn" for="demoPlay" aria-label="Play/Pause"></label>
-                        </div>
-                        <div class="player-controls">
-                            <label class="ctrl-btn ctrlPlay" for="demoPlay">⏵</label>
-                            <div class="progress-track" id="progressTrack"><div class="progress-fill" id="progressFill"></div></div>
-                            <span class="time-display" id="timeDisplay">0:00 / 0:45</span>
-                            <button class="ctrl-btn" id="ctrlMute">🔊</button>
-                            <div class="volume-bar"><div class="volume-fill"></div></div>
-                            <button class="ctrl-btn" id="ctrlFS">⛶</button>
-                        </div>
+            <h2>Try it now — Video Script Generator</h2>
+            <p>Enter a topic, pick your platform and style, and watch the automation produce a complete video script — hook, body, CTA, and everything in between.</p>
+            <div class="script-generator" id="scriptGenerator">
+                <h3>🎬 Generate your video script</h3>
+                <div class="sg-row">
+                    <div class="sg-field">
+                        <label for="topicInput">Video Topic</label>
+                        <input type="text" id="topicInput" placeholder="e.g. productivity, cooking, fitness, investing..." autocomplete="off">
                     </div>
-                    <div class="sample-titles">
-                        <h3>Sample auto-generated titles</h3>
-                        <div class="title-chips">
-                            <label class="title-chip active" for="title1">5 Habits That Quietly Changed My Life</label>
-                            <label class="title-chip" for="title2">The Truth About Productivity Nobody Tells You</label>
-                            <label class="title-chip" for="title3">Why Smart People Wake Up at 4 AM</label>
-                            <label class="title-chip" for="title4">I Tried Digital Detox for 30 Days — Here's What Happened</label>
-                            <label class="title-chip" for="title5">How to Focus Deeply in a Distracted World</label>
-                            <label class="title-chip" for="title6">The 2-Minute Rule That Saved My Mornings</label>
+                </div>
+                <div class="sg-row">
+                    <div class="sg-field">
+                        <label>Platform</label>
+                        <div class="sg-options" id="platformOptions">
+                            <span class="sg-chip selected" data-value="YouTube">YouTube</span>
+                            <span class="sg-chip" data-value="TikTok">TikTok</span>
+                            <span class="sg-chip" data-value="Instagram">Instagram</span>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h3 style="color:#fff; margin-bottom:12px;">Thumbnail gallery</h3>
-                    <p style="font-size:0.85rem; color:#888; margin-bottom:14px;">Generated thumbnails from recent automated uploads. Click any to preview.</p>
-                    <div class="thumb-gallery">
-                        <label class="thumb-item active" for="thumb1" data-bg="bg-1">
-                            <div class="thumb-preview"><div class="thumb-bg bg-1"></div><span class="thumb-duration">0:45</span><span class="thumb-label">Morning Routine</span></div>
-                            <div class="thumb-title">5 Habits That Quietly Changed My Life</div>
-                        </label>
-                        <label class="thumb-item" for="thumb2" data-bg="bg-2">
-                            <div class="thumb-preview"><div class="thumb-bg bg-2"></div><span class="thumb-duration">1:12</span><span class="thumb-label">Deep Work</span></div>
-                            <div class="thumb-title">The Truth About Productivity Nobody Tells You</div>
-                        </label>
-                        <label class="thumb-item" for="thumb3" data-bg="bg-3">
-                            <div class="thumb-preview"><div class="thumb-bg bg-3"></div><span class="thumb-duration">0:58</span><span class="thumb-label">4 AM Club</span></div>
-                            <div class="thumb-title">Why Smart People Wake Up at 4 AM</div>
-                        </label>
-                        <label class="thumb-item" for="thumb4" data-bg="bg-4">
-                            <div class="thumb-preview"><div class="thumb-bg bg-4"></div><span class="thumb-duration">1:34</span><span class="thumb-label">30-Day Challenge</span></div>
-                            <div class="thumb-title">I Tried Digital Detox for 30 Days — Here's What Happened</div>
-                        </label>
-                        <label class="thumb-item" for="thumb5" data-bg="bg-5">
-                            <div class="thumb-preview"><div class="thumb-bg bg-5"></div><span class="thumb-duration">2:01</span><span class="thumb-label">Focus Hacks</span></div>
-                            <div class="thumb-title">How to Focus Deeply in a Distracted World</div>
-                        </label>
-                        <label class="thumb-item" for="thumb6" data-bg="bg-6">
-                            <div class="thumb-preview"><div class="thumb-bg bg-6"></div><span class="thumb-duration">0:52</span><span class="thumb-label">Tiny Habits</span></div>
-                            <div class="thumb-title">The 2-Minute Rule That Saved My Mornings</div>
-                        </label>
+                <div class="sg-row">
+                    <div class="sg-field">
+                        <label>Style</label>
+                        <div class="sg-options" id="styleOptions">
+                            <span class="sg-chip selected" data-value="Educational">Educational</span>
+                            <span class="sg-chip" data-value="Entertainment">Entertainment</span>
+                            <span class="sg-chip" data-value="Motivational">Motivational</span>
+                            <span class="sg-chip" data-value="News">News</span>
+                        </div>
                     </div>
-                    <div style="margin-top:20px; padding:16px; background:#161616; border:1px solid #2a2a2a; border-radius:8px; font-size:0.8rem; color:#888;">
-                        <strong style="color:#f0c040;">Fully automated:</strong> Each of these videos — script, visuals, voiceover, captions, thumbnail, and title — was generated and uploaded without human intervention. The system produced everything you see above in a single run.
+                </div>
+                <div class="sg-row">
+                    <button class="sg-btn" id="generateBtn">⚡ Generate Script</button>
+                </div>
+
+                <!-- Results area -->
+                <div class="sg-result" id="sgResult">
+                    <div class="sg-meta">
+                        <div class="sg-meta-box">
+                            <h4>📌 Title</h4>
+                            <p id="sgTitle"></p>
+                        </div>
+                        <div class="sg-meta-box">
+                            <h4>📝 Description</h4>
+                            <p id="sgDesc"></p>
+                        </div>
+                    </div>
+                    <button class="sg-copy-btn" id="copyBtn">📋 Copy Script</button>
+                    <div id="sgSections"></div>
+                </div>
+
+                <!-- Canvas preview -->
+                <div class="canvas-preview" id="canvasPreview" style="display:none;">
+                    <canvas id="animCanvas" width="800" height="450"></canvas>
+                    <div class="canvas-controls">
+                        <button id="canvasPlay">▶ Play</button>
+                        <button id="canvasRestart">↺ Restart</button>
+                        <span class="canvas-status" id="canvasStatus">Ready</span>
                     </div>
                 </div>
             </div>

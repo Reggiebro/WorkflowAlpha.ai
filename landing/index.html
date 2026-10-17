@@ -39,45 +39,29 @@
         code { background: #222; padding: 2px 6px; border-radius: 4px; color: #f0c040; font-size: 0.9rem; }
         .badge { display: inline-block; background: #2a2a2a; color: #f0c040; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; margin-right: 6px; }
 
-        /* Demo preview section */
-        .demo-preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin: 24px 0; }
-        @media (max-width: 768px) { .demo-preview-grid { grid-template-columns: 1fr; } }
-
-        /* Phone mockup */
-        .phone-mockup { display: flex; justify-content: center; }
-        .phone-frame { width: 280px; background: #1a1a1a; border: 3px solid #333; border-radius: 32px; padding: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
-        .phone-notch { width: 100px; height: 20px; background: #000; border-radius: 0 0 12px 12px; margin: 0 auto 8px; }
-        .phone-screen { background: #0d0d0d; border-radius: 20px; overflow: hidden; min-height: 480px; display: flex; flex-direction: column; }
-        .phone-statusbar { display: flex; justify-content: space-between; padding: 6px 16px; font-size: 0.65rem; color: #888; background: #111; }
-        .phone-header { background: #1a1a1a; padding: 12px 16px; border-bottom: 1px solid #2a2a2a; }
-        .phone-header .app-name { color: #f0c040; font-weight: 700; font-size: 0.95rem; }
-        .phone-header .app-sub { color: #666; font-size: 0.7rem; margin-top: 2px; }
-        .phone-body { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
-        .phone-categories { display: flex; flex-wrap: wrap; gap: 4px; }
-        .phone-cat-chip { background: #222; color: #aaa; font-size: 0.6rem; padding: 3px 8px; border-radius: 10px; border: 1px solid #333; }
-        .phone-cat-chip.active { background: #f0c040; color: #000; border-color: #f0c040; font-weight: 600; }
-        .phone-input-area { background: #161616; border: 1px solid #2a2a2a; border-radius: 8px; padding: 10px; flex: 1; }
-        .phone-input-area .input-label { color: #666; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-        .phone-input-area .input-text { color: #ccc; font-size: 0.75rem; line-height: 1.4; }
-        .phone-generate-btn { background: #f0c040; color: #000; border: none; border-radius: 8px; padding: 10px; font-weight: 700; font-size: 0.8rem; cursor: pointer; }
-        .phone-generate-btn:hover { background: #e0b030; }
-        .phone-output { background: #111; border: 1px solid #2a2a2a; border-radius: 8px; padding: 10px; font-size: 0.65rem; color: #aaa; line-height: 1.5; max-height: 120px; overflow-y: auto; }
-        .phone-output .output-title { color: #f0c040; font-weight: 600; margin-bottom: 4px; font-size: 0.7rem; }
-        .phone-output .output-body { color: #888; }
-        .phone-nav { display: flex; justify-content: space-around; padding: 8px 0; background: #111; border-top: 1px solid #2a2a2a; }
-        .phone-nav-item { color: #555; font-size: 0.6rem; text-align: center; }
-        .phone-nav-item.active { color: #f0c040; }
-
-        /* Interactive demo prompts */
-        .demo-prompts { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
-        .demo-prompt-btn { background: #161616; border: 1px solid #2a2a2a; border-radius: 8px; padding: 14px 18px; color: #ccc; cursor: pointer; text-align: left; transition: all 0.2s; font-size: 0.9rem; }
-        .demo-prompt-btn:hover { border-color: #f0c040; color: #f0c040; }
-        .demo-prompt-btn.active { border-color: #f0c040; background: #1a1a1a; color: #f0c040; }
-        .demo-prompt-btn .prompt-icon { margin-right: 8px; }
-        .demo-output-panel { background: #111; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; margin-top: 16px; min-height: 160px; }
-        .demo-output-panel .output-label { color: #f0c040; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
-        .demo-output-panel .output-content { color: #aaa; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; }
-        .demo-output-panel .output-placeholder { color: #555; font-style: italic; }
+        /* Interactive prompt generator */
+        .prompt-generator { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 32px; margin: 24px 0; }
+        .prompt-generator .pg-title { color: #f0c040; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
+        .pg-input-group { margin-bottom: 16px; }
+        .pg-input-group label { display: block; color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .pg-input-group input[type="text"] { width: 100%; background: #111; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px 16px; color: #e0e0e0; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+        .pg-input-group input[type="text"]:focus { border-color: #f0c040; }
+        .pg-input-group select { width: 100%; background: #111; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px 16px; color: #e0e0e0; font-size: 0.95rem; outline: none; cursor: pointer; transition: border-color 0.2s; }
+        .pg-input-group select:focus { border-color: #f0c040; }
+        .pg-generate-btn { width: 100%; background: #f0c040; color: #000; border: none; border-radius: 8px; padding: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.2s; margin-top: 8px; }
+        .pg-generate-btn:hover { background: #e0b030; }
+        .pg-generate-btn:disabled { background: #555; color: #888; cursor: not-allowed; }
+        .pg-output-area { margin-top: 20px; display: none; }
+        .pg-output-area.visible { display: block; }
+        .pg-output-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .pg-output-label { color: #f0c040; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .pg-copy-btn { background: #2a2a2a; color: #f0c040; border: 1px solid #333; border-radius: 6px; padding: 6px 14px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+        .pg-copy-btn:hover { background: #333; border-color: #f0c040; }
+        .pg-copy-btn.copied { background: #f0c040; color: #000; border-color: #f0c040; }
+        .pg-output-textarea { width: 100%; min-height: 200px; background: #111; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px; color: #ccc; font-size: 0.9rem; line-height: 1.6; resize: vertical; outline: none; font-family: inherit; white-space: pre-wrap; word-wrap: break-word; }
+        .pg-output-textarea:focus { border-color: #f0c040; }
+        .pg-error { color: #e05555; font-size: 0.85rem; margin-top: 8px; display: none; }
+        .pg-error.visible { display: block; }
     </style>
 </head>
 <body>
@@ -140,108 +124,38 @@
 
     <section id="demo-preview">
         <div class="container">
-            <h2>See Aura Pro in action</h2>
-            <p>This is a live preview of how Aura Pro generates prompts. Click an example below to see the structured output the app produces — the same generation logic runs on-device, no API key needed.</p>
-            <div class="demo-preview-grid">
-                <!-- Phone mockup -->
-                <div class="phone-mockup">
-                    <div class="phone-frame">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="phone-statusbar">
-                                <span>9:41</span>
-                                <span>●●●</span>
-                            </div>
-                            <div class="phone-header">
-                                <div class="app-name">✦ Aura Pro</div>
-                                <div class="app-sub">AI Prompt Engine</div>
-                            </div>
-                            <div class="phone-body">
-                                <div class="phone-categories">
-                                    <span class="phone-cat-chip active">Build</span>
-                                    <span class="phone-cat-chip">Write</span>
-                                    <span class="phone-cat-chip">Design</span>
-                                    <span class="phone-cat-chip">Learn</span>
-                                    <span class="phone-cat-chip">Marketing</span>
-                                    <span class="phone-cat-chip">Business</span>
-                                    <span class="phone-cat-chip">Personal</span>
-                                    <span class="phone-cat-chip">Finance</span>
-                                    <span class="phone-cat-chip">Legal</span>
-                                    <span class="phone-cat-chip">Debug</span>
-                                    <span class="phone-cat-chip">Analysis</span>
-                                </div>
-                                <div class="phone-input-area">
-                                    <div class="input-label">Describe what you need</div>
-                                    <div class="input-text" id="phone-input-text">A landing page for a SaaS analytics dashboard targeting indie hackers</div>
-                                </div>
-                                <button class="phone-generate-btn" onclick="regenPhone()">✦ Generate Prompt</button>
-                                <div class="phone-output" id="phone-output">
-                                    <div class="output-title">Generated Prompt:</div>
-                                    <div class="output-body" id="phone-output-body">You are an expert product marketer. Create a compelling landing page copy for a SaaS analytics dashboard targeting indie hackers. Include: headline, subheadline, 3 key features with benefits, social proof section, and CTA. Tone: direct, technical, no fluff.</div>
-                                </div>
-                            </div>
-                            <div class="phone-nav">
-                                <div class="phone-nav-item active">⌂ Home</div>
-                                <div class="phone-nav-item">◈ History</div>
-                                <div class="phone-nav-item">⚙ Settings</div>
-                            </div>
-                        </div>
-                    </div>
+            <h2>Try the Prompt Generator</h2>
+            <p>This is a fully functional preview of Aura Pro's prompt generation engine. Type a topic, pick a category, and generate a complete, structured professional prompt — the same logic that runs on-device.</p>
+            <div class="prompt-generator">
+                <div class="pg-title">✦ Aura Pro Prompt Generator</div>
+                <div class="pg-input-group">
+                    <label for="pg-topic">Topic</label>
+                    <input type="text" id="pg-topic" placeholder="e.g., A landing page for a SaaS analytics dashboard" value="">
                 </div>
-                <!-- Interactive demo -->
-                <div>
-                    <div class="demo-prompts">
-                        <button class="demo-prompt-btn active" data-prompt="0">
-                            <span class="prompt-icon">🚀</span>Landing page for a SaaS analytics dashboard
-                        </button>
-                        <button class="demo-prompt-btn" data-prompt="1">
-                            <span class="prompt-icon">📧</span>Cold email to a potential B2B client
-                        </button>
-                        <button class="demo-prompt-btn" data-prompt="2">
-                            <span class="prompt-icon">📝</span>Blog post about remote work productivity
-                        </button>
-                    </div>
-                    <div class="demo-output-panel">
-                        <div class="output-label">Generated Prompt</div>
-                        <div class="output-content" id="demo-output-content">You are an expert product marketer. Create a compelling landing page copy for a SaaS analytics dashboard targeting indie hackers. Include: headline, subheadline, 3 key features with benefits, social proof section, and CTA. Tone: direct, technical, no fluff.</div>
-                    </div>
-                    <p style="text-align:center; margin-top:24px;">
-                        <a href="#demo" class="cta">Try Demo →</a>
-                    </p>
+                <div class="pg-input-group">
+                    <label for="pg-category">Category</label>
+                    <select id="pg-category">
+                        <option value="Build">Build</option>
+                        <option value="Write">Write</option>
+                        <option value="Design">Design</option>
+                        <option value="Learn">Learn</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Business">Business</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Legal">Legal</option>
+                        <option value="Debug">Debug</option>
+                        <option value="Analysis">Analysis</option>
+                    </select>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="demo-preview">
-        <div class="container">
-            <h2>See Aura Pro in action</h2>
-            <p>Click an example prompt to preview the structured output Aura Pro generates — the same on-device generation logic, no API key required.</p>
-            <div class="demo-preview-grid">
-                <div class="phone-mockup">
-                    <div class="phone-frame">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="phone-statusbar"><span>9:41</span><span>100%</span></div>
-                            <div class="phone-header"><div class="app-name">Aura Pro</div><div class="app-sub">AI Prompt Engine</div></div>
-                            <div class="phone-body">
-                                <div class="phone-categories"><span class="phone-cat-chip active">Build</span><span class="phone-cat-chip">Write</span><span class="phone-cat-chip">Design</span><span class="phone-cat-chip">Learn</span><span class="phone-cat-chip">Marketing</span></div>
-                                <div class="phone-input-area"><div class="input-label">Describe what you need</div><div class="input-text" id="phone-input-text">A landing page for a SaaS analytics dashboard targeting indie hackers</div></div>
-                                <button class="phone-generate-btn" onclick="regenPhone()">Generate Prompt</button>
-                                <div class="phone-output"><div class="output-title">Generated Prompt:</div><div class="output-body" id="phone-output-body">You are an expert product marketer. Create compelling landing page copy for a SaaS analytics dashboard targeting indie hackers. Include headline, three feature benefits, social proof, and CTA in a direct, technical tone.</div></div>
-                            </div>
-                            <div class="phone-nav"><div class="phone-nav-item active">Home</div><div class="phone-nav-item">History</div><div class="phone-nav-item">Settings</div></div>
-                        </div>
+                <button class="pg-generate-btn" id="pg-generate-btn" onclick="generatePrompt()">✦ Generate Prompt</button>
+                <div class="pg-error" id="pg-error">Please enter a topic first.</div>
+                <div class="pg-output-area" id="pg-output-area">
+                    <div class="pg-output-header">
+                        <span class="pg-output-label">Generated Prompt</span>
+                        <button class="pg-copy-btn" id="pg-copy-btn" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
                     </div>
-                </div>
-                <div>
-                    <div class="demo-prompts">
-                        <button class="demo-prompt-btn active" data-prompt="0"><span class="prompt-icon">🚀</span>Landing page for a SaaS analytics dashboard</button>
-                        <button class="demo-prompt-btn" data-prompt="1"><span class="prompt-icon">📧</span>Cold email to a potential B2B client</button>
-                        <button class="demo-prompt-btn" data-prompt="2"><span class="prompt-icon">📝</span>Blog post about remote work productivity</button>
-                    </div>
-                    <div class="demo-output-panel"><div class="output-label">Generated Prompt</div><div class="output-content" id="demo-output-content">You are an expert product marketer. Create compelling landing page copy for a SaaS analytics dashboard targeting indie hackers. Include headline, three feature benefits, social proof, and CTA in a direct, technical tone.</div></div>
-                    <p style="text-align:center; margin-top:24px;"><a href="#demo" class="cta">Try Demo →</a></p>
+                    <textarea class="pg-output-textarea" id="pg-output" readonly></textarea>
                 </div>
             </div>
         </div>
@@ -373,43 +287,326 @@
         </div>
     </footer>
 <script>
-        const demoOutputs = [
-            "You are an expert product marketer. Create a compelling landing page copy for a SaaS analytics dashboard targeting indie hackers. Include: headline, subheadline, 3 key features with benefits, social proof section, and CTA. Tone: direct, technical, no fluff.",
-            "You are a B2B sales expert. Write a cold email to a potential client introducing our project management software. Keep it under 150 words. Focus on pain points: missed deadlines, scattered communication, and lack of visibility. End with a soft CTA for a 15-minute call.",
-            "You are a productivity writer. Write a 1,200-word blog post about remote work productivity for software developers. Cover: morning routines, deep work blocks, async communication, and avoiding burnout. Use subheadings, bullet points, and a conversational tone."
-        ];
-        const phoneInputs = [
-            "A landing page for a SaaS analytics dashboard targeting indie hackers",
-            "A cold email to a potential B2B client about our project management tool",
-            "A blog post about remote work productivity for software developers"
-        ];
-        let currentDemo = 0;
+        // Real prompt generation engine — mirrors Aura Pro on-device logic
+        const PROMPT_TEMPLATES = {
+            Build: (topic) => `You are an expert software architect and full-stack developer. Your task is to build: ${topic}
 
-        const demoBtns = document.querySelectorAll('.demo-prompt-btn');
-        const demoOutput = document.getElementById('demo-output-content');
-        const phoneOutput = document.getElementById('phone-output-body');
-        const phoneInput = document.getElementById('phone-input-text');
+## Requirements
+1. Provide a clear, step-by-step technical plan for implementing this
+2. Specify the tech stack, frameworks, and tools needed
+3. Break down the architecture into components/modules
+4. Include code snippets for the most critical parts
+5. List potential challenges and how to solve them
+6. Estimate time and complexity
 
-        function setDemo(idx) {
-            currentDemo = idx;
-            demoBtns.forEach(b => b.classList.remove('active'));
-            demoBtns[idx].classList.add('active');
-            demoOutput.textContent = demoOutputs[idx];
-            phoneOutput.textContent = demoOutputs[idx];
-            phoneInput.textContent = phoneInputs[idx];
-        }
+## Output Format
+- **Overview**: Brief description of what will be built
+- **Tech Stack**: Recommended technologies with rationale
+- **Architecture**: System design and component breakdown
+- **Implementation Steps**: Numbered, actionable steps
+- **Code Examples**: Key code blocks (if applicable)
+- **Challenges & Solutions**: Risk mitigation
+- **Timeline**: Estimated effort
 
-        demoBtns.forEach(btn => {
-            btn.addEventListener('click', () => setDemo(parseInt(btn.dataset.prompt)));
-        });
+Start by analyzing the requirements for "${topic}" and provide a complete build plan.`,
 
-        function regenPhone() {
-            // Brief "generating" animation
-            phoneOutput.textContent = '✦ Generating...';
+            Write: (topic) => `You are a professional writer and content strategist. Your task is to write: ${topic}
+
+## Requirements
+1. Create engaging, well-structured content with a clear voice
+2. Use appropriate tone and style for the subject matter
+3. Include an attention-grabbing introduction
+4. Organize content with clear sections and flow
+5. End with a strong conclusion or call-to-action
+6. Optimize for readability (short paragraphs, subheadings, bullet points where appropriate)
+
+## Output Format
+- **Title/Headline**: Compelling title for the piece
+- **Introduction**: Hook the reader in 2-3 sentences
+- **Body**: Main content organized into logical sections
+- **Conclusion**: Summary and next steps
+- **Word count target**: Appropriate for the format
+
+Begin writing: ${topic}`,
+
+            Design: (topic) => `You are an expert UX/UI designer. Your task is to design: ${topic}
+
+## Requirements
+1. Define the design goals and user experience objectives
+2. Create a user flow or journey map
+3. Specify the visual design system (colors, typography, spacing)
+4. Describe the layout and component hierarchy
+5. Address responsive design considerations
+6. Include accessibility guidelines (WCAG compliance)
+
+## Output Format
+- **Design Goals**: What experience are we creating?
+- **User Flow**: Step-by-step user journey
+- **Visual System**: Color palette, typography, spacing scale
+- **Layout**: Wireframe description or component tree
+- **Interactions**: Key interaction patterns and micro-interactions
+- **Accessibility**: Compliance notes and inclusive design choices
+
+Design the following: ${topic}`,
+
+            Learn: (topic) => `You are an expert educator and instructional designer. Your task is to teach: ${topic}
+
+## Requirements
+1. Break the topic into logical, digestible learning modules
+2. Start with fundamentals and progress to advanced concepts
+3. Include practical examples and hands-on exercises
+4. Provide analogies and mental models for complex ideas
+5. Suggest additional resources for deeper learning
+6. Include a self-assessment or quiz
+
+## Output Format
+- **Learning Objectives**: What the student will be able to do
+- **Prerequisites**: What you should know before starting
+- **Module 1: Foundations** — Core concepts and terminology
+- **Module 2: Intermediate** — Building on the basics
+- **Module 3: Advanced** — Real-world application
+- **Exercises**: Practical tasks to reinforce learning
+- **Resources**: Books, courses, tools for further study
+
+Create a comprehensive learning plan for: ${topic}`,
+
+            Marketing: (topic) => `You are a senior marketing strategist. Your task is to create a marketing plan for: ${topic}
+
+## Requirements
+1. Define the target audience and buyer personas
+2. Craft a unique value proposition and positioning
+3. Outline a multi-channel marketing strategy
+4. Include specific tactics and campaign ideas
+5. Define KPIs and success metrics
+6. Provide a budget allocation framework
+
+## Output Format
+- **Target Audience**: Demographics, psychographics, pain points
+- **Value Proposition**: Why customers should care
+- **Positioning**: How we differentiate from competitors
+- **Channels & Tactics**: Specific marketing activities per channel
+- **Content Strategy**: Key messages and content types
+- **KPIs**: How to measure success
+- **Budget**: Recommended allocation across channels
+
+Develop a complete marketing strategy for: ${topic}`,
+
+            Business: (topic) => `You are a business strategist and advisor. Your task is to analyze and plan for: ${topic}
+
+## Requirements
+1. Conduct a thorough analysis of the current situation
+2. Identify key opportunities and threats
+3. Define clear, measurable business objectives
+4. Create an action plan with milestones
+5. Address resource requirements and constraints
+6. Include risk assessment and mitigation strategies
+
+## Output Format
+- **Executive Summary**: Overview of the business challenge
+- **Situation Analysis**: Current state, market conditions, competition
+- **SWOT**: Strengths, Weaknesses, Opportunities, Threats
+- **Objectives**: SMART goals (Specific, Measurable, Achievable, Relevant, Time-bound)
+- **Action Plan**: Initiatives, owners, timelines
+- **Risk Assessment**: Potential risks and mitigation
+- **Success Metrics**: How to measure progress
+
+Provide a comprehensive business analysis and strategy for: ${topic}`,
+
+            Personal: (topic) => `You are a personal development coach. Your task is to help with: ${topic}
+
+## Requirements
+1. Help clarify the user's goals and motivations
+2. Break down the journey into actionable steps
+3. Provide accountability frameworks and habits
+4. Include mindset and psychological strategies
+5. Suggest tools, apps, or resources
+6. Create a realistic timeline with milestones
+
+## Output Format
+- **Goal Clarity**: What exactly are we trying to achieve?
+- **Why It Matters**: Connecting to deeper motivations
+- **Action Steps**: Daily/weekly habits and practices
+- **Mindset**: Psychological strategies and reframing
+- **Tools & Resources**: Recommended apps, books, methods
+- **Timeline**: 30/60/90 day milestones
+- **Accountability**: How to stay on track
+
+Create a personal development plan for: ${topic}`,
+
+            Finance: (topic) => `You are a financial advisor and analyst. Your task is to provide guidance on: ${topic}
+
+## Requirements
+1. Analyze the financial situation or opportunity
+2. Explain key financial concepts relevant to the topic
+3. Provide actionable recommendations with numbers where possible
+4. Address risks and how to mitigate them
+5. Include tax considerations if applicable
+6. Suggest tools for tracking and management
+
+## Output Format
+- **Current Situation**: Assessment of the financial context
+- **Key Concepts**: Financial principles at play
+- **Analysis**: Numbers, projections, scenarios
+- **Recommendations**: Specific, actionable advice
+- **Risk Management**: Potential pitfalls and how to avoid them
+- **Tax Implications**: Relevant tax considerations
+- **Tools**: Recommended apps/spreadsheets for tracking
+
+Provide comprehensive financial guidance for: ${topic}`,
+
+            Legal: (topic) => `You are a legal advisor. Your task is to provide guidance on: ${topic}
+
+## Requirements
+1. Explain the legal landscape and relevant laws/regulations
+2. Identify key legal considerations and potential issues
+3. Provide actionable steps for compliance or protection
+4. Suggest when to consult a licensed attorney
+5. Include relevant documentation or contract considerations
+6. Address jurisdiction-specific factors
+
+## Output Format
+- **Disclaimer**: This is informational, not legal advice
+- **Legal Overview**: Relevant laws and regulations
+- **Key Issues**: Main legal considerations to address
+- **Action Steps**: Practical steps to take
+- **Contracts/Documents**: What paperwork is needed
+- **Red Flags**: Warning signs to watch for
+- **When to See a Attorney**: Situations requiring professional counsel
+
+Provide legal guidance for: ${topic}`,
+
+            Debug: (topic) => `You are a senior debugging engineer. Your task is to help resolve: ${topic}
+
+## Requirements
+1. Systematically analyze the problem and potential root causes
+2. Provide a structured debugging approach
+3. Include specific diagnostic commands or techniques
+4. Suggest fixes for the most likely causes
+5. Explain how to prevent similar issues in the future
+6. Include relevant tools and resources
+
+## Output Format
+- **Problem Statement**: Clear description of the issue
+- **Environment**: Context — OS, versions, dependencies
+- **Diagnostic Steps**: Systematic approach to isolate the cause
+- **Likely Causes**: Common reasons for this type of issue
+- **Solutions**: Specific fixes with code/commands where applicable
+- **Prevention**: How to avoid this in the future
+- **Tools**: Debugging tools, log analysis, monitoring
+
+Debug the following issue: ${topic}`,
+
+            Analysis: (topic) => `You are an expert analyst. Your task is to analyze: ${topic}
+
+## Requirements
+1. Define the scope and objectives of the analysis
+2. Gather and organize relevant data points
+3. Apply appropriate analytical frameworks or methodologies
+4. Identify patterns, trends, and insights
+5. Present findings with supporting evidence
+6. Provide actionable recommendations based on the analysis
+
+## Output Format
+- **Executive Summary**: Key findings at a glance
+- **Methodology**: Framework or approach used
+- **Data & Evidence**: Supporting facts, figures, observations
+- **Key Insights**: Main discoveries from the analysis
+- **Implications**: What these findings mean
+- **Recommendations**: Actionable next steps
+- **Limitations**: Caveats and areas for further investigation
+
+Conduct a thorough analysis of: ${topic}`
+        };
+
+        function generatePrompt() {
+            const topicInput = document.getElementById('pg-topic');
+            const categorySelect = document.getElementById('pg-category');
+            const outputArea = document.getElementById('pg-output-area');
+            const outputTextarea = document.getElementById('pg-output');
+            const errorEl = document.getElementById('pg-error');
+            const generateBtn = document.getElementById('pg-generate-btn');
+
+            const topic = topicInput.value.trim();
+            const category = categorySelect.value;
+
+            // Validation
+            if (!topic) {
+                errorEl.classList.add('visible');
+                topicInput.focus();
+                return;
+            }
+            errorEl.classList.remove('visible');
+
+            // Show loading state
+            generateBtn.disabled = true;
+            generateBtn.textContent = '✦ Generating...';
+            outputArea.classList.remove('visible');
+
+            // Simulate brief processing delay for realism
             setTimeout(() => {
-                phoneOutput.textContent = demoOutputs[currentDemo];
-            }, 600);
+                const template = PROMPT_TEMPLATES[category];
+                if (template) {
+                    const prompt = template(topic);
+                    outputTextarea.value = prompt;
+                    outputArea.classList.add('visible');
+                } else {
+                    // Fallback generic prompt
+                    outputTextarea.value = `You are an expert assistant. Your task is to help with: ${topic}
+
+Provide a comprehensive, well-structured response that addresses all aspects of the request. Use clear formatting, actionable steps, and professional language.`;
+                    outputArea.classList.add('visible');
+                }
+                generateBtn.disabled = false;
+                generateBtn.textContent = '✦ Generate Prompt';
+            }, 400);
         }
+
+        function copyToClipboard() {
+            const textarea = document.getElementById('pg-output');
+            const copyBtn = document.getElementById('pg-copy-btn');
+
+            if (!textarea.value) return;
+
+            // Modern clipboard API with fallback
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textarea.value).then(() => {
+                    showCopied(copyBtn);
+                }).catch(() => {
+                    fallbackCopy(textarea, copyBtn);
+                });
+            } else {
+                fallbackCopy(textarea, copyBtn);
+            }
+        }
+
+        function fallbackCopy(textarea, btn) {
+            textarea.focus();
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showCopied(btn);
+            } catch (err) {
+                // Final fallback — just select the text
+                textarea.select();
+            }
+        }
+
+        function showCopied(btn) {
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Allow Enter key to generate
+        document.getElementById('pg-topic').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                generatePrompt();
+            }
+        });
     </script>
 </body>
 </html>
