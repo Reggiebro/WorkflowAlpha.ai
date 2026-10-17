@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentary AI — Fully Private Autonomous Local AI Model</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d0d0d; color: #e0e0e0; line-height: 1.6; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+        header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 30px 0; text-align: center; }
+        h1 { font-size: 2.2rem; color: #f0c040; margin-bottom: 8px; font-weight: 700; letter-spacing: -0.5px; }
+        .subtitle { color: #999; font-size: 1.1rem; }
+        .nav-bar { display: flex; justify-content: center; gap: 24px; padding: 16px 0; background: #111; border-bottom: 1px solid #2a2a2a; }
+        .nav-bar a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
+        .nav-bar a:hover { color: #f0c040; }
+        section { padding: 40px 0; border-bottom: 1px solid #1f1f1f; }
+        h2 { color: #f0c040; font-size: 1.4rem; margin-bottom: 16px; }
+        .highlight { color: #f0c040; }
+        p { color: #aaa; margin-bottom: 12px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .feature-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; }
+        .feature-card h3 { color: #fff; margin-bottom: 8px; font-size: 1rem; }
+        .feature-card p { color: #888; font-size: 0.9rem; }
+        .demo-box { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 24px; margin: 20px 0; text-align: center; }
+        .demo-box .big { font-size: 3rem; color: #f0c040; font-weight: 700; }
+        .demo-box .label { color: #888; margin-top: 4px; }
+        .cta { display: inline-block; background: #f0c040; color: #000; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 1.1rem; margin-top: 12px; }
+        .cta:hover { background: #e0b030; }
+        .package-list { margin: 20px 0; }
+        .package-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1f1f1f; align-items: flex-start; }
+        .package-item:last-child { border-bottom: none; }
+        .package-icon { font-size: 1.4rem; min-width: 24px; }
+        .package-name { color: #fff; font-weight: 500; }
+        .package-desc { color: #888; font-size: 0.9rem; padding-left: 24px; }
+        .contact { text-align: center; padding: 40px 0; }
+        .contact p { color: #888; margin-bottom: 20px; }
+        footer { text-align: center; padding: 20px 0; color: #555; font-size: 0.8rem; }
+        code { background: #222; padding: 2px 6px; border-radius: 4px; color: #f0c040; font-size: 0.9rem; }
+        .badge { display: inline-block; background: #2a2a2a; color: #f0c040; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; margin-right: 6px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🧠 Mentary AI</h1>
+            <p class="subtitle">Fully private, autonomous local AI model — runs natively on your infrastructure with zero external network reliance</p>
+        </div>
+    </header>
+
+    <div class="nav-bar">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#package">Package</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section id="overview">
+        <div class="container">
+            <h2>What is Mentary AI</h2>
+            <p>Mentary AI is a fully self-contained, autonomous local AI model designed for organizations and individuals who cannot risk exposing sensitive data to external services. It runs natively on your own hardware — no cloud, no API calls, no telemetry, no data leaving your environment.</p>
+            <p>Who it's for: security-conscious businesses, healthcare providers handling PHI, law firms managing privileged communications, government agencies with strict data sovereignty requirements, financial institutions, and <strong>anyone who processes sensitive data and cannot rely on external AI services</strong>.</p>
+            <p>Unlike cloud-based AI tools that send your prompts and data to remote servers, Mentary AI operates entirely within your infrastructure. You retain complete data sovereignty — every query, every response, every byte stays under your control.</p>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>Why Mentary AI</h2>
+            <p>Complete data sovereignty. Zero external dependencies. Built for environments where privacy isn't optional — it's mandatory.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🧠 Fully Self-Contained AI Model</h3>
+                    <p>Mentary AI ships with all model weights, inference engine, and runtime dependencies bundled together. There are no external API calls, no server-side processing, and no hidden network activity. The model performs all computation locally on your hardware, ensuring consistent availability even in fully air-gapped environments.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔌 Zero External Network Reliance</h3>
+                    <p>Once deployed, Mentary AI requires absolutely no internet connectivity to function. It performs inference entirely using local compute resources — CPU, GPU, or both. This eliminates the risk of data interception, man-in-the-middle attacks, and unauthorized telemetry transmission that plague cloud-based AI solutions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔒 Total Data Privacy by Design</h3>
+                    <p>Every query you submit and every response generated stays within your environment. There are no logs sent to external servers, no usage analytics collected, and no third-party access of any kind. For healthcare, legal, and government use cases, this architecture simplifies compliance with HIPAA, GDPR, and data residency regulations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚙️ Custom Deployment Included</h3>
+                    <p>Your license includes deployment engineering support tailored to your infrastructure. Whether you need bare-metal installation, containerized deployment via Docker, or integration with existing on-premise systems, our team ensures Mentary AI runs optimally in your environment — including air-gapped and high-security configurations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="package">
+        <div class="container">
+            <h2>What's included</h2>
+            <div class="package-list">
+                <div class="package-item">
+                    <span class="package-icon">🧠</span>
+                    <div>
+                        <div class="package-name">Model Weights &amp; Runtime</div>
+                        <div class="package-desc">Complete pre-trained model weights with the optimized inference engine. Includes CPU and GPU-accelerated runtimes for maximum performance on your hardware.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <span class="package-icon">🚀</span>
+                    <div>
+                        <div class="package-name">Deployment Scripts</div>
+                        <div class="package-desc">Automated setup scripts for bare-metal Linux servers, workstations, and VM environments. Handles dependency resolution, model initialization, and health checks with minimal manual intervention.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <span class="package-icon">🐳</span>
+                    <div>
+                        <div class="package-name">Containerization</div>
+                        <div class="package-desc">Production-ready Docker image with Compose orchestration. Includes persistent volume configuration for model data, resource limit templates, and network isolation policies for secure deployment.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <span class="package-icon">📚</span>
+                    <div>
+                        <div class="package-name">Documentation</div>
+                        <div class="package-desc">Comprehensive guides covering installation, configuration, API usage, security hardening, performance tuning, and troubleshooting. Includes architecture diagrams and integration patterns for common enterprise environments.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <span class="package-icon">🛠️</span>
+                    <div>
+                        <div class="package-name">30-Day Priority Support</div>
+                        <div class="package-desc">Direct email access to our deployment engineering team for 30 days after purchase. Covers installation assistance, performance optimization, and resolution of any environment-specific issues.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="payment">
+        <div class="container">
+            <h2>How to buy</h2>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; margin:20px 0;">
+                <div class="feature-card">
+                    <h3>Step 1 — Contact us</h3>
+                    <p>Email <a href="mailto:workflowalpha.ai@gmail.com" style="color:#f0c040;">workflowalpha.ai@gmail.com</a>. State that you're interested in purchasing Mentary AI. We'll confirm availability, pricing, and answer any technical questions you have.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Step 2 — Receive payment instructions</h3>
+                    <p>We'll send you payment details for Western Union or MoneyGram transfer. This is the only accepted payment method — no PayPal, no cards, no escrow services.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Step 3 — Complete payment</h3>
+                    <p>Send the payment via Western Union or MoneyGram to the provided recipient details. Keep your transaction confirmation and MTCN number for verification.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Step 4 — Receive your package</h3>
+                    <p>After payment verification, you'll receive the complete Mentary AI package: model weights, deployment scripts, Docker container image, documentation, and setup access for 30-day priority support.</p>
+                </div>
+            </div>
+            <div class="demo-box" style="border-color:#f0c040; text-align:center;">
+                <div class="big" style="font-size:2rem;">$650 USD</div>
+                <div class="label">One-time payment — full package, lifetime license, no recurring fees</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get Mentary AI</h2>
+            <div class="demo-box" style="border-color:#f0c040; text-align:center; margin-bottom:30px;">
+                <div class="big" style="font-size:2.5rem;">$650 USD</div>
+                <div class="label" style="font-size:1rem;">One-time payment. Lifetime license. Complete data sovereignty.</div>
+            </div>
+            <p>Everything you need to run a fully private, autonomous AI model on your own infrastructure:</p>
+            <ul style="color:#aaa; font-size:0.95rem; margin:12px 0 20px 24px;">
+                <li>Complete model weights and optimized inference engine</li>
+                <li>Automated deployment scripts for bare-metal and VM environments</li>
+                <li>Production-ready Docker container with Compose orchestration</li>
+                <li>Comprehensive documentation and security hardening guides</li>
+                <li>30-day priority deployment support via email</li>
+            </ul>
+            <p>After payment via Western Union or MoneyGram, the complete package is delivered digitally. You deploy on your infrastructure, configure for your environment, and operate with full data sovereignty — no external dependencies, ever.</p>
+            <p style="margin-top:24px;"><strong>To purchase:</strong> email <a href="mailto:workflowalpha.ai@gmail.com" style="color:#f0c040;">workflowalpha.ai@gmail.com</a> — we'll confirm payment details and deliver the package after verification.</p>
+            <p style="margin-top:16px; font-size:0.85rem; color:#666;">Email is the only contact method.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>🧠 Mentary AI — Fully private autonomous local AI model. Zero external network reliance. Complete data sovereignty.</p>
+            <p>One-time $650 license. Lifetime ownership. Western Union / MoneyGram accepted.</p>
+            <p style="margin-top:8px; color:#444;">Contact: <a href="mailto:workflowalpha.ai@gmail.com" style="color:#555;">workflowalpha.ai@gmail.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>

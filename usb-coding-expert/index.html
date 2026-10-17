@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Coding Expert — Autonomous AI Coding from a Bootable USB</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d0d0d; color: #e0e0e0; line-height: 1.6; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+        header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 30px 0; text-align: center; }
+        h1 { font-size: 2.2rem; color: #f0c040; margin-bottom: 8px; font-weight: 700; letter-spacing: -0.5px; }
+        .subtitle { color: #999; font-size: 1.1rem; }
+        .nav-bar { display: flex; justify-content: center; gap: 24px; padding: 16px 0; background: #111; border-bottom: 1px solid #2a2a2a; }
+        .nav-bar a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
+        .nav-bar a:hover { color: #f0c040; }
+        section { padding: 40px 0; border-bottom: 1px solid #1f1f1f; }
+        h2 { color: #f0c040; font-size: 1.4rem; margin-bottom: 16px; }
+        .highlight { color: #f0c040; }
+        p { color: #aaa; margin-bottom: 12px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .feature-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; }
+        .feature-card h3 { color: #fff; margin-bottom: 8px; font-size: 1rem; }
+        .feature-card p { color: #888; font-size: 0.9rem; }
+        .demo-box { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 24px; margin: 20px 0; text-align: center; }
+        .demo-box .big { font-size: 3rem; color: #f0c040; font-weight: 700; }
+        .demo-box .label { color: #888; margin-top: 4px; }
+        .cta { display: inline-block; background: #f0c040; color: #000; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 1.1rem; margin-top: 12px; }
+        .cta:hover { background: #e0b030; }
+        .package-list { margin: 20px 0; }
+        .package-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1f1f1f; align-items: flex-start; }
+        .package-item:last-child { border-bottom: none; }
+        .package-icon { font-size: 1.4rem; min-width: 24px; }
+        .package-name { color: #fff; font-weight: 500; }
+        .package-desc { color: #888; font-size: 0.9rem; padding-left: 24px; }
+        .contact { text-align: center; padding: 40px 0; }
+        .contact p { color: #888; margin-bottom: 20px; }
+        footer { text-align: center; padding: 20px 0; color: #555; font-size: 0.8rem; }
+        code { background: #222; padding: 2px 6px; border-radius: 4px; color: #f0c040; font-size: 0.9rem; }
+        .badge { display: inline-block; background: #2a2a2a; color: #f0c040; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; margin-right: 6px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>💻 USB Coding Expert</h1>
+            <p class="subtitle">Fully autonomous, fully secure coding model — runs directly from a bootable USB stick. Elite programming assistance with absolute air-gapped security.</p>
+        </div>
+    </header>
+
+    <div class="nav-bar">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#package">Package</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section id="overview">
+        <div class="container">
+            <h2>What is USB Coding Expert</h2>
+            <p>USB Coding Expert is a fully autonomous, self-contained AI coding model engineered to run directly from a bootable USB stick. No installation. No cloud dependency. No trace left on the host machine. Plug it into any computer, boot from the USB, and you have a complete, elite-level programming assistant at your fingertips — anywhere in the world.</p>
+            <p>Every component — the model, the runtime, the boot configuration — lives entirely on the USB drive. The system boots into its own isolated environment, operates entirely offline, and leaves zero artifacts on the host hardware. When you're done, shut down, remove the USB, and there's nothing left behind.</p>
+            <h2 style="margin-top:24px;">Who it's for</h2>
+            <p><strong>Security researchers</strong> who need to analyze code and run tools on unfamiliar or untrusted machines without exposing their tooling to the host system.</p>
+            <p><strong>Penetration testers</strong> who carry a complete, air-gapped coding environment into client sites — no software to install, no network to trust, no evidence left on endpoints.</p>
+            <p><strong>Developers handling classified code</strong> who must work on sensitive projects without any cloud API calls, telemetry, or data leaving their physical control.</p>
+            <p><strong>Travelers who code on the go</strong> who refuse to install development environments on hotel, conference, or client machines — and need a full AI coding assistant that fits in their pocket.</p>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>What USB Coding Expert does</h2>
+            <p>A complete AI coding environment that boots from USB in under a minute. Write, review, debug, and generate code with an autonomous model that never phones home, never requires a network connection, and never touches the host system's storage.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🔌 Bootable USB deployment</h3>
+                    <p>The entire system — model, runtime, and configuration — ships as a bootable USB image. Flash it to any USB 3.0 drive (16 GB or larger), plug it into any x86-64 machine, select the USB as the boot device, and you're running. No host OS modification, no dual-boot setup, no virtualization required. Works on machines with Windows, Linux, or no operating system at all.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔒 Air-gapped security</h3>
+                    <p>USB Coding Expert operates with zero network connectivity. The model runs entirely on local CPU/GPU resources — no API calls, no telemetry, no phone-home, no data exfiltration path. Every computation happens inside the USB environment. For classified work, sensitive codebases, or high-threat environments, this isn't a feature — it's the entire point.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧹 No installation left behind</h3>
+                    <p>The system runs entirely from the USB drive in memory. Nothing is written to the host machine's hard drive, no registry entries are created, no temporary files are left behind, and no boot configuration is modified. Shut down, remove the USB, and the host machine is byte-for-byte identical to its pre-boot state. Perfect for air-gapped facilities, client sites, and shared machines.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💾 Persistent storage option</h3>
+                    <p>Enable an encrypted persistent storage partition on the USB drive to carry your projects, configurations, and conversation history between sessions. The partition is encrypted with a passphrase you set — without it, the data is unreadable. Disable it for a fully ephemeral session that leaves no trace even on the USB itself. You choose per boot: persistent or amnesiac.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="package">
+        <div class="container">
+            <h2>What's in the package</h2>
+            <div class="package-list">
+                <div class="package-item">
+                    <span class="package-icon">💿</span>
+                    <div>
+                        <div class="package-name">Bootable USB image</div>
+                        <div class="package-desc">Complete disk image ready to flash to any USB 3.0 drive (16 GB+). Includes the operating system, the AI coding model, and all runtime dependencies. Boots on any x86-64 machine in under 60 seconds.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <span class="package-icon">🧠</span>
+                    <div>
+                        <div class="package-name">Model files</div>
+                        <div class="package-desc">The full autonomous coding model weights, pre-configured and optimized for local inference. No download required at setup — everything needed is included in the image. Capable of code generation, review, debugging, refactoring, and architectural guidance.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <span class="package-icon">⚙️</span>
+                    <div>
+                        <div class="package-name">Boot scripts</div>
+                        <div class="package-desc">Automated boot and initialization scripts that handle hardware detection, environment setup, and model loading. Supports both persistent and amnesiac boot modes. Includes a first-boot wizard for passphrase setup and hardware configuration.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <span class="package-icon">📄</span>
+                    <div>
+                        <div class="package-name">Documentation</div>
+                        <div class="package-desc">Complete buyer documentation covering: USB flashing instructions for Windows, macOS, and Linux; boot mode selection (persistent vs. amnesiac); hardware requirements and compatibility; model capabilities and usage examples; troubleshooting guide; and security best practices for air-gapped operation.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <span class="package-icon">🛟</span>
+                    <div>
+                        <div class="package-name">30-day support</div>
+                        <div class="package-desc">Direct email support for 30 days after purchase. Covers installation issues, hardware compatibility questions, configuration help, and usage guidance. Response within 24 hours on business days.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="payment">
+        <div class="container">
+            <h2>How to buy</h2>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; margin:20px 0;">
+                <div class="feature-card">
+                    <h3>Step 1 — Contact to purchase</h3>
+                    <p>Email <a href="mailto:workflowalpha.ai@gmail.com" style="color:#f0c040;">workflowalpha.ai@gmail.com</a>. State you want to buy USB Coding Expert. We'll confirm price and provide payment instructions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Step 2 — Pay via Western Union or MoneyGram</h3>
+                    <p>Send payment to the seller's WU or MG account (details provided when you contact us). This is the only payment method — no PayPal, no cards, no escrow.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Step 3 — Get the full package</h3>
+                    <p>After payment confirmation, receive the complete package: bootable USB image, model files, boot scripts, documentation, and setup guide. Delivered as a download link or shipped pre-flashed to a USB drive — your choice.</p>
+                </div>
+            </div>
+            <div class="demo-box" style="border-color:#f0c040; text-align:center;">
+                <div class="big" style="font-size:2rem;">$350 USD</div>
+                <div class="label">One-time payment — full package, lifetime license</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get USB Coding Expert</h2>
+            <div class="demo-box" style="border-color:#f0c040; text-align:center; margin-bottom:30px;">
+                <div class="big" style="font-size:2.5rem;">$350 USD</div>
+                <div class="label" style="font-size:1rem;">One-time payment. Full package. Lifetime license. Bootable anywhere.</div>
+            </div>
+            <p>Everything you need to run an elite AI coding assistant from a USB stick:</p>
+            <ul style="color:#aaa; font-size:0.95rem; margin:12px 0 20px 24px;">
+                <li>Bootable USB image — flash and boot on any x86-64 machine</li>
+                <li>Full model files — no download required, works offline</li>
+                <li>Boot scripts — automated setup, persistent or amnesiac mode</li>
+                <li>Complete documentation — flashing, booting, usage, troubleshooting</li>
+                <li>30-day email support — installation and usage help</li>
+            </ul>
+            <p>After payment via Western Union or MoneyGram, the full package is delivered as a download link. Flash it to your USB drive, boot, and start coding — no installation, no network, no trace.</p>
+            <p style="margin-top:24px;"><strong>To buy:</strong> email <a href="mailto:workflowalpha.ai@gmail.com" style="color:#f0c040;">workflowalpha.ai@gmail.com</a> — we'll confirm payment details and deliver the package after payment.</p>
+            <p style="margin-top:16px; font-size:0.85rem; color:#666;">Email is the only contact method.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>USB Coding Expert — autonomous AI coding model on a bootable USB stick. Air-gapped. Offline. No trace.</p>
+            <p>One-time license. Lifetime ownership. Works on any x86-64 machine.</p>
+            <p style="margin-top:8px; color:#444;">Contact: <a href="mailto:workflowalpha.ai@gmail.com" style="color:#555;">workflowalpha.ai@gmail.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>
