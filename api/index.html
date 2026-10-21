@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Micro-Agent — Pay-Per-Call AI API</title>
+<meta name="description" content="20 paid AI and data micro-tasks over HTTP 402 on Base (USDC). Summarize, extract, translate, debug Python, review code, probe media. Pay per call, no signup.">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0d0d0d; color:#e0e0e0; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:0 20px; }
+header { background:#1a1a1a; border-bottom:1px solid #2a2a2a; padding:40px 0; text-align:center; }
+h1 { font-size:2.4rem; color:#f0c040; margin-bottom:10px; font-weight:700; }
+.subtitle { color:#999; font-size:1.15rem; max-width:700px; margin:0 auto; }
+.badge { display:inline-block; background:#2a2a2a; color:#f0c040; padding:4px 12px; border-radius:12px; font-size:.8rem; margin:8px 4px 0; }
+section { padding:36px 0; border-bottom:1px solid #1f1f1f; }
+h2 { color:#f0c040; font-size:1.4rem; margin-bottom:18px; }
+p { color:#aaa; margin-bottom:14px; }
+code { background:#222; padding:2px 7px; border-radius:4px; color:#f0c040; font-size:.88rem; }
+pre { background:#161616; border:1px solid #2a2a2a; border-radius:8px; padding:18px; overflow-x:auto; margin:16px 0; }
+pre code { background:none; padding:0; color:#d0d0d0; font-size:.85rem; line-height:1.5; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:20px 0; }
+.card { background:#161616; border:1px solid #2a2a2a; border-radius:8px; padding:18px; }
+.card h3 { color:#fff; font-size:.98rem; margin-bottom:8px; }
+.card .price { color:#f0c040; font-weight:700; font-size:1.1rem; }
+.card p { color:#888; font-size:.85rem; margin:6px 0 0; }
+.cta { display:inline-block; background:#f0c040; color:#000; padding:14px 30px; border-radius:6px; font-weight:700; text-decoration:none; font-size:1.05rem; margin-top:10px; }
+.cta:hover { background:#e0b030; }
+.note { background:#1a1a1a; border-left:3px solid #f0c040; padding:14px 18px; border-radius:0 6px 6px 0; margin:18px 0; color:#bbb; font-size:.9rem; }
+footer { text-align:center; padding:24px 0; color:#555; font-size:.82rem; }
+.live { color:#4ade80; font-weight:600; }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Hermes Micro-Agent</h1>
+    <p class="subtitle">A pay-per-call AI and data API. No account, no API key, no signup — send a request, pay in USDC on Base, get the result.</p>
+    <div>
+      <span class="badge">HTTP 402</span>
+      <span class="badge">Base / USDC</span>
+      <span class="badge">20 tasks</span>
+      <span class="badge">Verified on-chain</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2>How it works</h2>
+    <p>Every call is paid. The server answers <code>402 Payment Required</code> with the exact amount and our address. You send USDC on Base, then resend the same request with the transaction hash in the <code>X-Payment</code> header. We verify the transfer on-chain before doing any work.</p>
+    <div class="note">
+      <strong>No payment, no work.</strong> If the transfer cannot be confirmed, the request is refused. Tasks that are not implemented are refused outright — never faked.
+    </div>
+
+    <h2 style="margin-top:30px">Example</h2>
+    <pre><code>POST /task
+Content-Type: application/json
+
+{"task": "summarize", "prompt": "Your long text here..."}</code></pre>
+
+    <pre><code>HTTP/1.1 402 Payment Required
+
+{
+  "error": "Payment Required",
+  "message": "'summarize' costs 0.10 USDC on Base...",
+  "accepts": [{
+    "scheme": "exact",
+    "network": "base",
+    "maxAmountRequired": "10",
+    "asset": "USDC",
+    "payTo": "0x078fE079A9440631Bc6AD722D7143dC382b4ea4f",
+    "resource": "/task?task=summarize"
+  }]
+}</code></pre>
+
+    <pre><code>POST /task
+Content-Type: application/json
+X-Payment: 0x&lt;tx_hash&gt;
+
+{"task": "summarize", "prompt": "Your long text here..."}</code></pre>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Tasks and prices</h2>
+    <p>Prices are per call, in USDC on Base. Discovery document: <code>GET /.well-known/x402</code></p>
+
+    <div class="grid">
+      <div class="card"><h3>Text</h3><div class="price">$0.10</div>
+        <p>summarize · extract · keywords · sentiment · translate · rewrite · proofread</p></div>
+      <div class="card"><h3>Code</h3><div class="price">$0.15–0.25</div>
+        <p>python_debug · code_lint · code_explain · code_refactor · code_review</p></div>
+      <div class="card"><h3>Data</h3><div class="price">$0.10–0.15</div>
+        <p>json_minify · json_query · csv_to_json · hash · base64 · convert</p></div>
+      <div class="card"><h3>Media</h3><div class="price">$0.15</div>
+        <p>describe_image · probe_media</p></div>
+    </div>
+
+    <pre><code>GET /tasks
+
+{"tasks": {"summarize": 0.1, "code_review": 0.25, ...},
+ "receiver": "0x078fE079A9440631Bc6AD722D7143dC382b4ea4f",
+ "network": "base"}</code></pre>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>JSON-RPC</h2>
+    <pre><code>POST /rpc
+{"jsonrpc":"2.0","id":1,"method":"summarize","params":{"text":"..."}}</code></pre>
+    <p>Same payment flow as <code>/task</code>. Useful for agent-to-agent calls where the caller already speaks JSON-RPC.</p>
+
+    <h2 style="margin-top:30px">Endpoints</h2>
+    <pre><code>/task      POST   paid — run one task
+/rpc       POST   paid — JSON-RPC entry point
+/tasks     GET    free — price list
+/health    GET    free — liveness + implemented count
+/.well-known/x402  GET  free — discovery manifest</code></pre>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="text-align:center">
+    <h2>Try it now</h2>
+    <p>Discovery and price list are free to read. Only paid calls cost anything.</p>
+    <pre style="text-align:left"><code>curl https://92.5.95.177.sslip.io/tasks
+curl https://92.5.95.177.sslip.io/.well-known/x402</code></pre>
+    <p style="margin-top:18px"><span class="live">● Live on Base mainnet</span></p>
+    <a class="cta" href="https://92.5.95.177.sslip.io/.well-known/x402">Read the manifest</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Receiver: <code>0x078fE079A9440631Bc6AD722D7143dC382b4ea4f</code> · USDC on Base · Self-facilitated settlement</p>
+  </div>
+</footer>
+</body>
+</html>
