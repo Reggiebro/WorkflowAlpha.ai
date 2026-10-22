@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /test-email.html
+
+Sitemap: https://reggiebro.github.io/WorkflowAlpha.ai/sitemap.xml
